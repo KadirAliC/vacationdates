@@ -1,79 +1,165 @@
-import { StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { useState, useMemo } from 'react';
 import { Text, View } from '@/components/Themed';
 import { Calendar } from 'react-native-calendars';
 import holidays from '../holidays.json';
 
+const years = Array.from({ length: 6 }, (_, i) => (2025 + i).toString());
+const months = [
+  { number: '01', name: '1. Ocak - Januar' },
+  { number: '02', name: '2. Şubat - Februar' },
+  { number: '03', name: '3. Mart - März' },
+  { number: '04', name: '4. Nisan - April' },
+  { number: '05', name: '5. Mayıs - Mai' },
+  { number: '06', name: '6. Haziran - Juni' },
+  { number: '07', name: '7. Temmuz - Juli' },
+  { number: '08', name: '8. Ağustos - August' },
+  { number: '09', name: '9. Eylül - September' },
+  { number: '10', name: '10. Ekim - Oktober' },
+  { number: '11', name: '11. Kasım - November' },
+  { number: '12', name: '12. Aralık - Dezember' },
+];
+
 export default function TabOneScreen() {
-  const vacation = { key: 'vacation', color: 'red', selectedDotColor: 'blue' };
-  const massage = { key: 'massage', color: 'blue', selectedDotColor: 'blue' };
-  const workout = { key: 'workout', color: 'green' };
+  const [selectedYear, setSelectedYear] = useState('2025');
+  const events = {};
+  const holidaysMap = useMemo(() => {
+    const result = {};
+    Object.keys(holidays).forEach((year) => {
+      result[year] = {
+        turkey: holidays[year]['turkey'].reduce((acc, holiday) => {
+          acc[holiday.date] = holiday.holiday;
+          return acc;
+        }, {}),
+        germany: holidays[year]['germany'].reduce((acc, holiday) => {
+          acc[holiday.date] = holiday.holiday;
+          return acc;
+        }, {}),
+      };
+    });
+    return result;
+  }, []);
 
-  const events = {
-    // '2025-03-01': { dots: [{ key: 'massage', color: 'blue' }, { key: 'workout', color: 'green' }] },
-    // '2025-03-02': { dots: [{ key: 'massage', color: 'blue' }, { key: 'workout', color: 'green' }] },
-    // '2025-03-14': { dots: [{ key: 'vacation', color: 'red' }] },
-    // '2025-03-15': { dots: [{ key: 'massage', color: 'blue' }] },
-    // '2025-03-16': { dots: [{ key: 'workout', color: 'green' }] },
-  };
-
-  const currentYear = new Date().getFullYear();
-  const holidaysFor2025 = holidays[currentYear]['turkey'];
-
-  holidaysFor2025.forEach((holiday) => {
-    if (!events[holiday.date]) {
+  Object.keys(holidays).forEach(year => {
+    const turkeyHolidays = holidays[year]['turkey'];
+    turkeyHolidays.forEach((holiday) => {
+      if (!events[holiday.date]) {
         events[holiday.date] = { dots: [] };
-    }
-    events[holiday.date].dots.push({ key: 'holiday_turkey', color: 'purple' });
-  });
-
-  holidays[2025]['germany'].forEach((holiday) => {
-    if (!events[holiday.date]) {
+      }
+      events[holiday.date].dots.push({ key: 'holiday_turkey', color: 'red' });
+    });
+    const germanyHolidays = holidays[year]['germany'];
+    germanyHolidays.forEach((holiday) => {
+      if (!events[holiday.date]) {
         events[holiday.date] = { dots: [] };
-    }
-    events[holiday.date].dots.push({ key: 'holiday_germany', color: 'purple' });
+      }
+      events[holiday.date].dots.push({ key: 'holiday_germany', color: 'black' });
+    });
   });
-
-  const handleDayPress = (day) => {
-    const date = day.dateString;
-    const turkeyHolidays = holidaysFor2025
-        .filter(holiday => holiday.date === date)
-        .map((holiday, index) => `${index + 1}. ${holiday.holiday}`)
-        .join('\n');
-
-    const germanyHolidays = holidays[2025]['germany']
-        .filter(holiday => holiday.date === date)
-        .map((holiday, index) => `${index + 1}. ${holiday.holiday}`)
-        .join('\n');
-
-    let alertMessage = '';
-    if (turkeyHolidays) {
-        alertMessage += `Türkiye Tatilleri:
-${turkeyHolidays}\n`;
-    }
-    if (germanyHolidays) {
-        alertMessage += `Almanya Tatilleri:
-${germanyHolidays}`;
-    }
-
-    if (alertMessage) {
-        alert(alertMessage);
-    } else {
-        alert(`No holidays on ${date}`);
-    }
-  };
 
   const today = new Date().toISOString().split('T')[0];
   const [currentDate, setCurrentDate] = useState(today);
   const [calendarKey, setCalendarKey] = useState(0);
+  const [yearModalVisible, setYearModalVisible] = useState(false);
+  const [monthModalVisible, setMonthModalVisible] = useState(false);
+
+  const handleYearSelect = (year) => {
+    setSelectedYear(year);
+    const [_, month, day] = currentDate.split('-');
+    const newDate = `${year}-${month}-${day}`;
+    setCurrentDate(newDate);
+    setCalendarKey(prevKey => prevKey + 1);
+    setYearModalVisible(false);
+  };
+
+  const handleMonthSelect = (month) => {
+    const [year, _, day] = currentDate.split('-');
+    const newDate = `${year}-${month.number}-${day}`;
+    setCurrentDate(newDate);
+    setCalendarKey(prevKey => prevKey + 1);
+    setMonthModalVisible(false);
+  };
 
   const goToToday = () => {
     setCurrentDate(today);
     setCalendarKey(prevKey => prevKey + 1);
   };
 
+  const handleDayPress = (day) => {
+    const date = day.dateString;
+    const year = date.split('-')[0];
+    const turkeyHolidays = holidaysMap[year]?.turkey[date] || [];
+    const germanyHolidays = holidaysMap[year]?.germany[date] || [];
+
+    let alertMessage = '';
+    if (turkeyHolidays.length > 0) {
+      alertMessage += `Türkiye Tatilleri:\n${turkeyHolidays}\n`;
+    }
+    if (germanyHolidays.length > 0) {
+      alertMessage += `Almanya Tatilleri:\n${germanyHolidays}`;
+    }
+
+    if (alertMessage) {
+      Alert.alert(`Holidays on ${date}`, alertMessage);
+    } else {
+      Alert.alert(`Holidays on ${date}`, `No holidays`);
+    }
+  };
+
   return (
     <View style={styles.container}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10 }]}>
+          <Text style={styles.buttonText}>Year Selection</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10 }]}>
+          <Text style={styles.buttonText}>Month Selection</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Yıl Seç Modal */}
+      <Modal transparent={true} visible={yearModalVisible} animationType="slide" onRequestClose={() => setYearModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <FlatList
+              data={years}
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => handleYearSelect(item)} style={styles.modalItem}>
+                  <Text style={styles.modalText}>{item}</Text>
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item) => item}
+            />
+            <TouchableOpacity onPress={() => setYearModalVisible(false)} style={styles.closeButton}>
+              <Text style={styles.buttonText}>Kapat</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Ay Seç Modal */}
+      <Modal transparent={true} visible={monthModalVisible} animationType="slide" onRequestClose={() => setMonthModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <FlatList
+              data={months}
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => handleMonthSelect(item)} style={styles.modalItem}>
+                  <Text style={styles.modalText}>{item.name}</Text>  {/* Ay ismini burada gösteriyoruz */}
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item) => item.number}
+            />
+            <TouchableOpacity onPress={() => setMonthModalVisible(false)} style={styles.closeButton}>
+              <Text style={styles.buttonText}>Kapat</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+
+
       <View>
         <Calendar
           key={calendarKey}
@@ -83,24 +169,10 @@ ${germanyHolidays}`;
           firstDay={1}
           minDate="2025-01-01"
           maxDate="2030-12-31"
-          style={{
-            height: '80%',
-            width: '145%',
-            alignSelf: 'center',
-          }}
+          style={{ height: '80%', width: '145%', alignSelf: 'center' }}
           theme={{
-            'stylesheet.calendar.header': {
-              dayTextAtIndex5: {
-                color: 'green',
-              },
-              dayTextAtIndex6: {
-                color: 'green',
-              },
-            },
             backgroundColor: '#ffffff',
             calendarBackground: '#ffffff',
-            textSectionTitleColor: '#b6c1cd',
-            textSectionTitleDisabledColor: '#d9e1e8',
             selectedDayBackgroundColor: '#00adf5',
             selectedDayTextColor: '#ffffff',
             todayTextColor: '#00adf5',
@@ -112,25 +184,15 @@ ${germanyHolidays}`;
             disabledArrowColor: '#d9e1e8',
             monthTextColor: 'blue',
             indicatorColor: 'blue',
-            textDayFontFamily: 'monospace',
-            textMonthFontFamily: 'monospace',
-            textDayHeaderFontFamily: 'monospace',
-            textDayFontWeight: '300',
-            textMonthFontWeight: 'bold',
-            textDayHeaderFontWeight: '300',
-            textDayFontSize: 16,
-            textMonthFontSize: 16,
-            textDayHeaderFontSize: 16,
           }}
           markingType={'multi-dot'}
           markedDates={events}
           onDayPress={handleDayPress}
         />
 
-        <TouchableOpacity onPress={goToToday} style={styles.button}>
-          <Text style={styles.buttonText}>Today</Text>
+        <TouchableOpacity onPress={goToToday} style={[styles.button]}>
+          <Text style={styles.buttonText}>Go to Today</Text>
         </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -142,17 +204,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
   button: {
-    marginTop: 20,
     backgroundColor: '#007bff',
     paddingVertical: 15,
     borderRadius: 10,
@@ -168,5 +220,31 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    width: '80%',
+  },
+  modalItem: {
+    paddingVertical: 10,
+  },
+  modalText: {
+    fontSize: 18,
+    color: 'black',
+    textAlign: 'center',
+  },
+  closeButton: {
+    backgroundColor: '#f44336',
+    marginTop: 20,
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
 });
