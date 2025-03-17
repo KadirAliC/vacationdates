@@ -1,0 +1,168 @@
+{
+    "2025": {
+      "turkey": [
+        {"date": "2025-01-01", "holiday": "Yilbasi", "day": "Thursday"},
+        {"date": "2025-03-29", "holiday": "Ramazan Bayrami Arifesi", "day": "Saturday"},
+        {"date": "2025-03-30", "holiday": "Ramazan Bayrami 1.gun", "day": "Sunday"},
+        {"date": "2025-03-31", "holiday": "Ramazan Bayrami 2.gun", "day": "Monday"},
+        {"date": "2025-04-01", "holiday": "Ramazan Bayrami 3.gun", "day": "Tuesday"},
+        {"date": "2025-04-23", "holiday": "Ulusal Egemenlik ve Cocuk Bayrami", "day": "Wednesday"},
+        {"date": "2025-05-01", "holiday": "Emek ve Dayanisma Gunu", "day": "Thursday"},
+        {"date": "2025-05-19", "holiday": "Ataturku Anma, Genclik ve Spor Bayrami", "day": "Monday"},
+        {"date": "2025-06-05", "holiday": "Kurban Bayrami Arifesi", "day": "Thursday"},
+        {"date": "2025-06-06", "holiday": "Kurban Bayrami 1.gun", "day": "Friday"},
+        {"date": "2025-06-07", "holiday": "Kurban Bayrami 2.gun", "day": "Saturday"},
+        {"date": "2025-06-08", "holiday": "Kurban Bayrami 3.gun", "day": "Sunday"},
+        {"date": "2025-06-09", "holiday": "Kurban Bayrami 4.gun", "day": "Monday"},
+        {"date": "2025-07-15", "holiday": "Demokrasi ve Milli Birlik Gunu", "day": "Tuesday"},
+        {"date": "2025-08-30", "holiday": "Zafer Bayrami", "day": "Saturday"},
+        {"date": "2025-10-28", "holiday": "Cumhuriyet Bayrami Arifesi", "day": "Tuesday"},
+        {"date": "2025-10-29", "holiday": "Cumhuriyet Bayrami", "day": "Wednesday"},
+        {"date": "2025-12-31", "holiday": "Yilbasi Gecesi", "day": "Wednesday"}
+      ],
+      "germany": [
+        {"date": "2025-01-01", "holiday": "Neujahr (Yilbasi)", "day": "Wednesday"},
+        {"date": "2025-04-18", "holiday": "Karfreitag (Kutsal Cuma)", "day": "Friday"},
+        {"date": "2025-04-21", "holiday": "Ostermontag (Paskalya Pazartesisi)", "day": "Monday"},
+        {"date": "2025-05-01", "holiday": "Tag der Arbeit (Isci Bayrami)", "day": "Thursday"},
+        {"date": "2025-05-29", "holiday": "Christi Himmelfahrt (Yukselis Gunu)", "day": "Thursday"},
+        {"date": "2025-06-09", "holiday": "Pfingstmontag (Hamsin Pazartesisi)", "day": "Monday"},
+        {"date": "2025-10-03", "holiday": "Tag der Deutschen Einheit (Alman Birligi Gunu)", "day": "Friday"},
+        {"date": "2025-12-25", "holiday": "Erster Weihnachtstag (Noel Gunu)", "day": "Thursday"},
+        {"date": "2025-12-26", "holiday": "Zweiter Weihnachtstag (Noel Ertesi Gunu)", "day": "Friday"}
+      ]
+    },
+    "2026": {
+      "turkey": [
+        {"date": "2026-01-01", "holiday": "Yilbasi", "day": "Friday"},
+        {"date": "2026-03-19", "holiday": "Ramazan Bayrami Arifesi", "day": "Thursday"},
+        {"date": "2026-03-20", "holiday": "Ramazan Bayrami 1.gun", "day": "Friday"},
+        {"date": "2026-03-21", "holiday": "Ramazan Bayrami 2.gun", "day": "Saturday"},
+        {"date": "2026-03-22", "holiday": "Ramazan Bayrami 3.gun", "day": "Sunday"},
+        {"date": "2026-04-23", "holiday": "Ulusal Egemenlik ve Cocuk Bayrami", "day": "Thursday"},
+        {"date": "2026-05-01", "holiday": "Emek ve Dayanisma Gunu", "day": "Friday"},
+        {"date": "2026-05-19", "holiday": "Ataturku Anma, Genclik ve Spor Bayrami", "day": "Tuesday"},
+        {"date": "2026-05-26", "holiday": "Kurban Bayrami Arifesi", "day": "Tuesday"},
+        {"date": "2026-05-27", "holiday": "Kurban Bayrami 1.gun", "day": "Wednesday"},
+        {"date": "2026-05-28", "holiday": "Kurban Bayrami 2.gun", "day": "Thursday"},
+        {"date": "2026-05-29", "holiday": "Kurban Bayrami 3.gun", "day": "Friday"},
+        {"date": "2026-05-30", "holiday": "Kurban Bayrami 4.gun", "day": "Saturday"},
+        {"date": "2026-07-15", "holiday": "Demokrasi ve Milli Birlik Gunu", "day": "Thursday"},
+        {"date": "2026-08-30", "holiday": "Zafer Bayrami", "day": "Sunday"},
+        {"date": "2026-10-28", "holiday": "Cumhuriyet Bayrami Arifesi", "day": "Wednesday"},
+        {"date": "2026-10-29", "holiday": "Cumhuriyet Bayrami", "day": "Thursday"},
+        {"date": "2026-12-31", "holiday": "Yilbasi Gecesi", "day": "Thursday"}
+      ],
+      "germany": [
+        {"date": "2026-01-01", "holiday": "Neujahr (Yilbasi)", "day": "Friday"},
+        {"date": "2026-04-02", "holiday": "Karfreitag (Kutsal Cuma)", "day": "Friday"},
+        {"date": "2026-04-05", "holiday": "Ostermontag (Paskalya Pazartesisi)", "day": "Monday"},
+        {"date": "2026-05-01", "holiday": "Tag der Arbeit (Isci Bayrami)", "day": "Friday"},
+        {"date": "2026-05-13", "holiday": "Christi Himmelfahrt (Yukselis Gunu)", "day": "Thursday"},
+        {"date": "2026-05-24", "holiday": "Pfingstmontag (Hamsin Pazartesisi)", "day": "Monday"},
+        {"date": "2026-10-03", "holiday": "Tag der Deutschen Einheit (Alman Birligi Gunu)", "day": "Saturday"},
+        {"date": "2026-12-25", "holiday": "Erster Weihnachtstag (Noel Gunu)", "day": "Friday"},
+        {"date": "2026-12-26", "holiday": "Zweiter Weihnachtstag (Noel Ertesi Gunu)", "day": "Saturday"}
+      ]
+    },
+    "2027": {
+      "turkey": [
+        {"date": "2027-01-01", "holiday": "Yilbasi", "day": "Friday"},
+        {"date": "2027-03-08", "holiday": "Ramazan Bayrami Arifesi", "day": "Monday"},
+        {"date": "2027-03-09", "holiday": "Ramazan Bayrami 1.gun", "day": "Tuesday"},
+        {"date": "2027-03-10", "holiday": "Ramazan Bayrami 2.gun", "day": "Wednesday"},
+        {"date": "2027-03-11", "holiday": "Ramazan Bayrami 3.gun", "day": "Thursday"},
+        {"date": "2027-04-23", "holiday": "Ulusal Egemenlik ve Cocuk Bayrami", "day": "Friday"},
+        {"date": "2027-05-01", "holiday": "Emek ve Dayanisma Gunu", "day": "Saturday"},
+        {"date": "2027-05-19", "holiday": "Ataturku Anma, Genclik ve Spor Bayrami", "day": "Wednesday"},
+        {"date": "2027-05-15", "holiday": "Kurban Bayrami Arifesi", "day": "Saturday"},
+        {"date": "2027-05-16", "holiday": "Kurban Bayrami 1.gun", "day": "Sunday"},
+        {"date": "2027-05-17", "holiday": "Kurban Bayrami 2.gun", "day": "Monday"},
+        {"date": "2027-05-18", "holiday": "Kurban Bayrami 3.gun", "day": "Tuesday"},
+        {"date": "2027-05-19", "holiday": "Kurban Bayrami 4.gun", "day": "Wednesday"},
+        {"date": "2027-07-15", "holiday": "Demokrasi ve Milli Birlik Gunu", "day": "Thursday"},
+        {"date": "2027-08-30", "holiday": "Zafer Bayrami", "day": "Monday"},
+        {"date": "2027-10-28", "holiday": "Cumhuriyet Bayrami Arifesi", "day": "Thursday"},
+        {"date": "2027-10-29", "holiday": "Cumhuriyet Bayrami", "day": "Friday"},
+        {"date": "2027-12-31", "holiday": "Yilbasi Gecesi", "day": "Friday"}
+      ],
+      "germany": [
+        {"date": "2027-01-01", "holiday": "Neujahr (Yilbasi)", "day": "Friday"},
+        {"date": "2027-04-15", "holiday": "Karfreitag (Kutsal Cuma)", "day": "Friday"},
+        {"date": "2027-04-18", "holiday": "Ostermontag (Paskalya Pazartesisi)", "day": "Monday"},
+        {"date": "2027-05-01", "holiday": "Tag der Arbeit (Isci Bayrami)", "day": "Saturday"},
+        {"date": "2027-05-05", "holiday": "Christi Himmelfahrt (Yukselis Gunu)", "day": "Thursday"},
+        {"date": "2027-05-16", "holiday": "Pfingstmontag (Hamsin Pazartesisi)", "day": "Monday"},
+        {"date": "2027-10-03", "holiday": "Tag der Deutschen Einheit (Alman Birligi Gunu)", "day": "Sunday"},
+        {"date": "2027-12-25", "holiday": "Erster Weihnachtstag (Noel Gunu)", "day": "Saturday"},
+        {"date": "2027-12-26", "holiday": "Zweiter Weihnachtstag (Noel Ertesi Gunu)", "day": "Sunday"}
+      ]
+    },
+    "2028": {
+      "turkey": [
+        {"date": "2028-01-01", "holiday": "Yilbasi", "day": "Saturday"},
+        {"date": "2028-02-26", "holiday": "Ramazan Bayrami Arifesi", "day": "Saturday"},
+        {"date": "2028-02-27", "holiday": "Ramazan Bayrami 1.gun", "day": "Sunday"},
+        {"date": "2028-02-28", "holiday": "Ramazan Bayrami 2.gun", "day": "Monday"},
+        {"date": "2028-02-29", "holiday": "Ramazan Bayrami 3.gun", "day": "Tuesday"},
+        {"date": "2028-04-23", "holiday": "Ulusal Egemenlik ve Cocuk Bayrami", "day": "Sunday"},
+        {"date": "2028-05-01", "holiday": "Emek ve Dayanisma Gunu", "day": "Monday"},
+        {"date": "2028-05-04", "holiday": "Kurban Bayrami Arifesi", "day": "Thursday"},
+        {"date": "2028-05-05", "holiday": "Kurban Bayrami 1.gun", "day": "Friday"},
+        {"date": "2028-05-06", "holiday": "Kurban Bayrami 2.gun", "day": "Saturday"},
+        {"date": "2028-05-07", "holiday": "Kurban Bayrami 3.gun", "day": "Sunday"},
+        {"date": "2028-05-08", "holiday": "Kurban Bayrami 4.gun", "day": "Monday"},
+        {"date": "2028-05-19", "holiday": "Ataturku Anma, Genclik ve Spor Bayrami", "day": "Friday"},
+        {"date": "2028-07-15", "holiday": "Demokrasi ve Milli Birlik Gunu", "day": "Friday"},
+        {"date": "2028-08-30", "holiday": "Zafer Bayrami", "day": "Wednesday"},
+        {"date": "2028-10-28", "holiday": "Cumhuriyet Bayrami Arifesi", "day": "Saturday"},
+        {"date": "2028-10-29", "holiday": "Cumhuriyet Bayrami", "day": "Sunday"},
+        {"date": "2028-12-31", "holiday": "Yilbasi Gecesi", "day": "Sunday"}
+      ],
+      "germany": [
+        {"date": "2028-01-01", "holiday": "Neujahr (Yilbasi)", "day": "Saturday"},
+        {"date": "2028-04-07", "holiday": "Karfreitag (Kutsal Cuma)", "day": "Friday"},
+        {"date": "2028-04-10", "holiday": "Ostermontag (Paskalya Pazartesisi)", "day": "Monday"},
+        {"date": "2028-05-01", "holiday": "Tag der Arbeit (Isci Bayrami)", "day": "Monday"},
+        {"date": "2028-05-25", "holiday": "Christi Himmelfahrt (Yukselis Gunu)", "day": "Thursday"},
+        {"date": "2028-06-05", "holiday": "Pfingstmontag (Hamsin Pazartesisi)", "day": "Monday"},
+        {"date": "2028-10-03", "holiday": "Tag der Deutschen Einheit (Alman Birligi Gunu)", "day": "Tuesday"},
+        {"date": "2028-12-25", "holiday": "Erster Weihnachtstag (Noel Gunu)", "day": "Monday"},
+        {"date": "2028-12-26", "holiday": "Zweiter Weihnachtstag (Noel Ertesi Gunu)", "day": "Tuesday"}
+      ]
+    },
+    "2029": {
+      "turkey": [
+        {"date": "2029-01-01", "holiday": "Yilbasi", "day": "Monday"},
+        {"date": "2029-02-14", "holiday": "Ramazan Bayrami Arifesi", "day": "Wednesday"},
+        {"date": "2029-02-15", "holiday": "Ramazan Bayrami 1.gun", "day": "Thursday"},
+        {"date": "2029-02-16", "holiday": "Ramazan Bayrami 2.gun", "day": "Friday"},
+        {"date": "2029-02-17", "holiday": "Ramazan Bayrami 3.gun", "day": "Saturday"},
+        {"date": "2029-04-23", "holiday": "Ulusal Egemenlik ve Cocuk Bayrami", "day": "Monday"},
+        {"date": "2029-04-23", "holiday": "Kurban Bayrami Arifesi", "day": "Monday"},
+        {"date": "2029-04-24", "holiday": "Kurban Bayrami 1.gun", "day": "Tuesday"},
+        {"date": "2029-04-25", "holiday": "Kurban Bayrami 2.gun", "day": "Wednesday"},
+        {"date": "2029-04-26", "holiday": "Kurban Bayrami 3.gun", "day": "Thursday"},
+        {"date": "2029-04-27", "holiday": "Kurban Bayrami 4.gun", "day": "Friday"},
+        {"date": "2029-05-01", "holiday": "Emek ve Dayanisma Gunu", "day": "Tuesday"},
+        {"date": "2029-05-19", "holiday": "Ataturku Anma, Genclik ve Spor Bayrami", "day": "Saturday"},
+        {"date": "2029-07-15", "holiday": "Demokrasi ve Milli Birlik Gunu", "day": "Monday"},
+        {"date": "2029-08-30", "holiday": "Zafer Bayrami", "day": "Thursday"},
+        {"date": "2029-10-28", "holiday": "Cumhuriyet Bayrami Arifesi", "day": "Monday"},
+        {"date": "2029-10-29", "holiday": "Cumhuriyet Bayrami", "day": "Tuesday"},
+        {"date": "2029-12-31", "holiday": "Yilbasi Gecesi", "day": "Tuesday"}
+      ],
+      "germany": [
+        {"date": "2029-01-01", "holiday": "Neujahr (Yilbasi)", "day": "Monday"},
+        {"date": "2029-03-29", "holiday": "Karfreitag (Kutsal Cuma)", "day": "Friday"},
+        {"date": "2029-04-01", "holiday": "Ostermontag (Paskalya Pazartesisi)", "day": "Monday"},
+        {"date": "2029-05-01", "holiday": "Tag der Arbeit (Isci Bayrami)", "day": "Tuesday"},
+        {"date": "2029-05-09", "holiday": "Christi Himmelfahrt (Yukselis Gunu)", "day": "Thursday"},
+        {"date": "2029-05-20", "holiday": "Pfingstmontag (Hamsin Pazartesisi)", "day": "Monday"},
+        {"date": "2029-10-03", "holiday": "Tag der Deutschen Einheit (Alman Birligi Gunu)", "day": "Thursday"},
+        {"date": "2029-12-25", "holiday": "Erster Weihnachtstag (Noel Gunu)", "day": "Tuesday"},
+        {"date": "2029-12-26", "holiday": "Zweiter Weihnachtstag (Noel Ertesi Gunu)", "day": "Wednesday"}
+      ]
+    }
+  }
+  

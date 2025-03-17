@@ -1,42 +1,101 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
+import { StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { Text, View } from '@/components/Themed';
-
 import { Calendar } from 'react-native-calendars';
+import holidays from '../holidays.json';
 
 export default function TabOneScreen() {
   const vacation = { key: 'vacation', color: 'red', selectedDotColor: 'blue' };
   const massage = { key: 'massage', color: 'blue', selectedDotColor: 'blue' };
   const workout = { key: 'workout', color: 'green' };
+
+  const events = {
+    // '2025-03-01': { dots: [{ key: 'massage', color: 'blue' }, { key: 'workout', color: 'green' }] },
+    // '2025-03-02': { dots: [{ key: 'massage', color: 'blue' }, { key: 'workout', color: 'green' }] },
+    // '2025-03-14': { dots: [{ key: 'vacation', color: 'red' }] },
+    // '2025-03-15': { dots: [{ key: 'massage', color: 'blue' }] },
+    // '2025-03-16': { dots: [{ key: 'workout', color: 'green' }] },
+  };
+
+  const currentYear = new Date().getFullYear();
+  const holidaysFor2025 = holidays[currentYear]['turkey'];
+
+  holidaysFor2025.forEach((holiday) => {
+    if (!events[holiday.date]) {
+        events[holiday.date] = { dots: [] };
+    }
+    events[holiday.date].dots.push({ key: 'holiday_turkey', color: 'purple' });
+  });
+
+  holidays[2025]['germany'].forEach((holiday) => {
+    if (!events[holiday.date]) {
+        events[holiday.date] = { dots: [] };
+    }
+    events[holiday.date].dots.push({ key: 'holiday_germany', color: 'purple' });
+  });
+
+  const handleDayPress = (day) => {
+    const date = day.dateString;
+    const turkeyHolidays = holidaysFor2025
+        .filter(holiday => holiday.date === date)
+        .map((holiday, index) => `${index + 1}. ${holiday.holiday}`)
+        .join('\n');
+
+    const germanyHolidays = holidays[2025]['germany']
+        .filter(holiday => holiday.date === date)
+        .map((holiday, index) => `${index + 1}. ${holiday.holiday}`)
+        .join('\n');
+
+    let alertMessage = '';
+    if (turkeyHolidays) {
+        alertMessage += `Türkiye Tatilleri:
+${turkeyHolidays}\n`;
+    }
+    if (germanyHolidays) {
+        alertMessage += `Almanya Tatilleri:
+${germanyHolidays}`;
+    }
+
+    if (alertMessage) {
+        alert(alertMessage);
+    } else {
+        alert(`No holidays on ${date}`);
+    }
+  };
+
+  const today = new Date().toISOString().split('T')[0];
+  const [currentDate, setCurrentDate] = useState(today);
+  const [calendarKey, setCalendarKey] = useState(0);
+
+  const goToToday = () => {
+    setCurrentDate(today);
+    setCalendarKey(prevKey => prevKey + 1);
+  };
+
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.title}>Calendar</Text> */}
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-
-      <View>
-        <Text>Calendar screen</Text>
-      </View>
-
       <View>
         <Calendar
+          key={calendarKey}
+          current={currentDate}
+          enableSwipeMonths={true}
+          showWeekNumbers={true}
+          firstDay={1}
           minDate="2025-01-01"
           maxDate="2030-12-31"
           style={{
-            height: '100%',
-            width: '170%',
-            alignSelf: 'center'
-
+            height: '80%',
+            width: '145%',
+            alignSelf: 'center',
           }}
           theme={{
             'stylesheet.calendar.header': {
               dayTextAtIndex5: {
-                color: 'green'
+                color: 'green',
               },
               dayTextAtIndex6: {
-                color: 'green'
-              }
+                color: 'green',
+              },
             },
             backgroundColor: '#ffffff',
             calendarBackground: '#ffffff',
@@ -61,27 +120,18 @@ export default function TabOneScreen() {
             textDayHeaderFontWeight: '300',
             textDayFontSize: 16,
             textMonthFontSize: 16,
-            textDayHeaderFontSize: 16
-          }
-          }
-          markingType={'multi-dot'}
-          markedDates={{
-            '2025-03-14': { selected: true, marked: true, selectedColor: 'blue' },
-            '2025-03-15': { marked: true },
-            '2025-03-16': { marked: true, dotColor: 'red', activeOpacity: 0 },
-            '2025-03-17': { disabled: true, disableTouchEvent: true },
-
-            '2025-03-01': { dots: [vacation, massage, workout] },
-            '2025-03-02': { dots: [massage, workout], disabled: true }
+            textDayHeaderFontSize: 16,
           }}
-        // onDayPress={(day) => console.log('day', day)}
-        // onDayLongPress={(day) => console.log('day', day)}
-        // onMonthChange={(month) => console.log('month', month)}
-        // onYearChange={(year) => console.log('year', year)}
-        // onDayLongPress={(day) => console.log('day', day)}
+          markingType={'multi-dot'}
+          markedDates={events}
+          onDayPress={handleDayPress}
         />
-      </View>
 
+        <TouchableOpacity onPress={goToToday} style={styles.button}>
+          <Text style={styles.buttonText}>Today</Text>
+        </TouchableOpacity>
+
+      </View>
     </View>
   );
 }
@@ -101,4 +151,22 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  button: {
+    marginTop: 20,
+    backgroundColor: '#007bff',
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+
 });
