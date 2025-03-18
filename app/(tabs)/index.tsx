@@ -109,16 +109,15 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
-        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10 }]}>
+        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10, backgroundColor: '#1199a6' }]}>
           <Text style={styles.buttonText}>Year Selection</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10 }]}>
+        <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10, backgroundColor: '#1199a6' }]}>
           <Text style={styles.buttonText}>Month Selection</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Yıl Seç Modal */}
       <Modal transparent={true} visible={yearModalVisible} animationType="slide" onRequestClose={() => setYearModalVisible(false)}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -138,7 +137,6 @@ export default function TabOneScreen() {
         </View>
       </Modal>
 
-      {/* Ay Seç Modal */}
       <Modal transparent={true} visible={monthModalVisible} animationType="slide" onRequestClose={() => setMonthModalVisible(false)}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -158,41 +156,59 @@ export default function TabOneScreen() {
         </View>
       </Modal>
 
-
-
       <View>
-        <Calendar
-          key={calendarKey}
-          current={currentDate}
-          enableSwipeMonths={true}
-          showWeekNumbers={true}
-          firstDay={1}
-          minDate="2025-01-01"
-          maxDate="2030-12-31"
-          style={{ height: '80%', width: '145%', alignSelf: 'center' }}
-          theme={{
-            backgroundColor: '#ffffff',
-            calendarBackground: '#ffffff',
-            selectedDayBackgroundColor: '#00adf5',
-            selectedDayTextColor: '#ffffff',
-            todayTextColor: '#00adf5',
-            dayTextColor: '#2d4150',
-            textDisabledColor: '#d9e1e8',
-            dotColor: '#00adf5',
-            selectedDotColor: '#ffffff',
-            arrowColor: 'orange',
-            disabledArrowColor: '#d9e1e8',
-            monthTextColor: 'blue',
-            indicatorColor: 'blue',
-          }}
-          markingType={'multi-dot'}
-          markedDates={events}
-          onDayPress={handleDayPress}
-        />
+        <View style={{ height: '80%', width: '100%', alignSelf: 'center' }}>
+          <Calendar
+            key={calendarKey}
+            current={currentDate}
+            enableSwipeMonths={true}
+            showWeekNumbers={true}
+            firstDay={1}
+            minDate="2025-01-01"
+            maxDate="2030-12-31"
+            style={{ height: '88%', width: '140%', alignSelf: 'center' }}
+            theme={{
+              'stylesheet.calendar.header': {
+                dayTextAtIndex5: {
+                  color: 'green',
+                  fontWeight: 'bold'
+                },
+                dayTextAtIndex6: {
+                  color: 'green',
+                  fontWeight: 'bold'
+                }
+              },
+              backgroundColor: '#ffffff',
+              calendarBackground: '#ffffff',
+              selectedDayBackgroundColor: '#00adf5',
+              selectedDayTextColor: '#ffffff',
+              todayTextColor: '#00adf5',
+              dayTextColor: '#2d4150',
+              textDisabledColor: '#d9e1e8',
+              dotColor: '#00adf5',
+              selectedDotColor: '#ffffff',
+              arrowColor: 'orange',
+              disabledArrowColor: '#d9e1e8',
+              monthTextColor: 'blue',
+              indicatorColor: 'blue',
+              textDayFontSize: 25,
+              textMonthFontSize: 16,
+              textDayHeaderFontSize: 15
+            }}
+            markingType={'multi-dot'}
+            markedDates={events}
+            onDayPress={handleDayPress}
+          />
 
-        <TouchableOpacity onPress={goToToday} style={[styles.button]}>
-          <Text style={styles.buttonText}>Go to Today</Text>
-        </TouchableOpacity>
+          <Text style={{ alignSelf: 'center', marginBottom: 30, fontSize: 18, fontWeight: 'bold' }}>⬅️ Swipe to Change Months ➡️</Text>
+        </View>
+
+        <View style={{ alignSelf: 'center', width: '40%' }}>
+          <TouchableOpacity onPress={goToToday} style={[styles.button, { backgroundColor: 'green', borderColor: 'white', borderWidth: 1 }]}>
+            <Text style={styles.buttonText}>  Go to Today  </Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     </View>
   );
