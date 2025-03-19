@@ -93,10 +93,10 @@ export default function TabOneScreen() {
 
     let alertMessage = '';
     if (turkeyHolidays.length > 0) {
-      alertMessage += `Türkiye Tatilleri:\n${turkeyHolidays}\n`;
+      alertMessage += `Türkiye Holidays:\n${turkeyHolidays}\n`;
     }
     if (germanyHolidays.length > 0) {
-      alertMessage += `Almanya Tatilleri:\n${germanyHolidays}`;
+      alertMessage += `Germany Holidays:\n${germanyHolidays}`;
     }
 
     if (alertMessage) {
@@ -108,12 +108,12 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, marginRight: 15, marginLeft: 15, backgroundColor: '#bfbfbf' }}>
-        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10, backgroundColor: '#1199a6' }]}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, marginRight: 30, marginLeft: 30, backgroundColor: '#bfbfbf' }}>
+        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10, backgroundColor: '#1E90FF' }]}>
           <Text style={styles.buttonText}>Year Selection</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10, backgroundColor: '#1199a6' }]}>
+        <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10, backgroundColor: '#1E90FF' }]}>
           <Text style={styles.buttonText}>Month Selection</Text>
         </TouchableOpacity>
       </View>
@@ -162,7 +162,7 @@ export default function TabOneScreen() {
             key={calendarKey}
             current={currentDate}
             enableSwipeMonths={true}
-            showWeekNumbers={true}
+            // showWeekNumbers={true}
             firstDay={1}
             minDate="2025-01-01"
             maxDate="2030-12-31"
@@ -193,7 +193,9 @@ export default function TabOneScreen() {
               indicatorColor: 'blue',
               textDayFontSize: 25,
               textMonthFontSize: 16,
-              textDayHeaderFontSize: 15
+              textMonthFontWeight: 'bold',
+              textDayHeaderFontSize: 15,
+              textDayHeaderFontWeight: 'bold'
             }}
             markingType={'multi-dot'}
             markedDates={events}
