@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start', // Listeyi baştan itibaren yerleştirmek için
     padding: 20,
+    backgroundColor: '#bfbfbf'
   },
   itemContainer: {
     marginVertical: 10,
@@ -101,14 +102,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   turkeyStyle: {
-    backgroundColor: '#ffcccc', // Türkiye tatilleri için kırmızı tonları
+    backgroundColor: '#f75757', // Türkiye tatilleri için kırmızı tonları
   },
   germanyStyle: {
-    backgroundColor: '#cce0ff', // Almanya tatilleri için mavi tonları
+    backgroundColor: '#81b2fc', // Almanya tatilleri için mavi tonları
   },
   itemText: {
     fontSize: 16,
-    color: '#333', // Yazının rengi koyu gri
+    color: 'black', // Yazının rengi koyu gri
+    fontWeight: 'bold',
   },
   countryText: {
     fontWeight: 'bold',

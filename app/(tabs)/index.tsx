@@ -108,7 +108,7 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, marginRight: 15, marginLeft: 15, backgroundColor: '#bfbfbf' }}>
         <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10, backgroundColor: '#1199a6' }]}>
           <Text style={styles.buttonText}>Year Selection</Text>
         </TouchableOpacity>
@@ -156,8 +156,8 @@ export default function TabOneScreen() {
         </View>
       </Modal>
 
-      <View>
-        <View style={{ height: '80%', width: '100%', alignSelf: 'center' }}>
+      <View style={{ backgroundColor: '#bfbfbf' }}>
+        <View style={{ height: '80%', width: '100%', alignSelf: 'center', backgroundColor: '#bfbfbf' }}>
           <Calendar
             key={calendarKey}
             current={currentDate}
@@ -166,7 +166,7 @@ export default function TabOneScreen() {
             firstDay={1}
             minDate="2025-01-01"
             maxDate="2030-12-31"
-            style={{ height: '88%', width: '140%', alignSelf: 'center' }}
+            style={{ height: '90%', width: '140%', alignSelf: 'center' }}
             theme={{
               'stylesheet.calendar.header': {
                 dayTextAtIndex5: {
@@ -198,12 +198,13 @@ export default function TabOneScreen() {
             markingType={'multi-dot'}
             markedDates={events}
             onDayPress={handleDayPress}
+            borderRadius={10}
           />
 
-          <Text style={{ alignSelf: 'center', marginBottom: 30, fontSize: 18, fontWeight: 'bold' }}>⬅️ Swipe to Change Months ➡️</Text>
+          <Text style={{ alignSelf: 'center', marginBottom: 30, fontSize: 18, fontWeight: 'bold', color: 'black' }}>⬅️ Swipe to Change Months ➡️</Text>
         </View>
 
-        <View style={{ alignSelf: 'center', width: '40%' }}>
+        <View style={{ alignSelf: 'center', width: '40%', backgroundColor: '#bfbfbf' }}>
           <TouchableOpacity onPress={goToToday} style={[styles.button, { backgroundColor: 'green', borderColor: 'white', borderWidth: 1 }]}>
             <Text style={styles.buttonText}>  Go to Today  </Text>
           </TouchableOpacity>
@@ -219,11 +220,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#bfbfbf'
   },
   button: {
     backgroundColor: '#007bff',
     paddingVertical: 15,
-    borderRadius: 10,
+    borderRadius: 35,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -240,7 +242,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: '#bfbfbf'
   },
   modalContent: {
     backgroundColor: 'white',

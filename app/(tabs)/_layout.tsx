@@ -52,6 +52,10 @@ export default function TabLayout() {
         options={{
           title: 'Holiday List',
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+          headerTitleStyle: {
+            color: colorScheme === 'dark' ? '#fff' : '#000',
+            backgroundColor: Colors[colorScheme ?? 'light'].background,
+          },
         }}
       />
     </Tabs>
