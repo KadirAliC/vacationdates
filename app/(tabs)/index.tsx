@@ -93,7 +93,7 @@ export default function TabOneScreen() {
 
     let alertMessage = '';
     if (turkeyHolidays.length > 0) {
-      alertMessage += `Türkiye Holidays:\n${turkeyHolidays}\n`;
+      alertMessage += `Turkey Holidays:\n${turkeyHolidays}\n`;
     }
     if (germanyHolidays.length > 0) {
       alertMessage += `Germany Holidays:\n${germanyHolidays}`;
@@ -162,12 +162,27 @@ export default function TabOneScreen() {
             key={calendarKey}
             current={currentDate}
             enableSwipeMonths={true}
-            // showWeekNumbers={true}
             firstDay={1}
             minDate="2025-01-01"
             maxDate="2030-12-31"
             style={{ height: '90%', width: '140%', alignSelf: 'center' }}
             theme={{
+              'stylesheet.day.basic': {
+                today: {
+                  backgroundColor: '#00adf5',
+                  borderRadius: 20, // Daha yuvarlak bir görünüm sağlar
+                  height: 35, // Çemberin boyutunu arttırır
+                  width: 35,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                },
+                todayText: {
+                  color: '#ffffff', // Bugünün yazısını beyaz yap
+                  fontWeight: 'bold',
+                  fontSize: 18, // Daha belirgin hale getirmek için
+                }
+              },
               'stylesheet.calendar.header': {
                 dayTextAtIndex5: {
                   color: 'green',
@@ -182,7 +197,7 @@ export default function TabOneScreen() {
               calendarBackground: '#ffffff',
               selectedDayBackgroundColor: '#00adf5',
               selectedDayTextColor: '#ffffff',
-              todayTextColor: '#00adf5',
+              todayTextColor: '#ffffff',
               dayTextColor: '#2d4150',
               textDisabledColor: '#d9e1e8',
               dotColor: '#00adf5',
@@ -191,14 +206,17 @@ export default function TabOneScreen() {
               disabledArrowColor: '#d9e1e8',
               monthTextColor: 'blue',
               indicatorColor: 'blue',
-              textDayFontSize: 25,
+              textDayFontSize: 18,
               textMonthFontSize: 16,
               textMonthFontWeight: 'bold',
               textDayHeaderFontSize: 15,
-              textDayHeaderFontWeight: 'bold'
+              textDayHeaderFontWeight: 'bold',
             }}
             markingType={'multi-dot'}
-            markedDates={events}
+            markedDates={{
+              ...events,
+              [today]: { selected: true, selectedColor: 'blue' } // Bugünü yuvarlak içine alma
+            }}
             onDayPress={handleDayPress}
             borderRadius={10}
           />
