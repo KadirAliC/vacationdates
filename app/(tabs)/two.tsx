@@ -10,21 +10,21 @@ export default function TabTwoScreen() {
 
   const holidayList = Object.keys(holidays).flatMap((year) => {
     if (year === selectedYear) {
-      const turkeyHolidays = holidays[year].turkey.map((holiday) => ({
-        year,
-        country: 'Turkey',
-        holiday: holiday.holiday,
-        date: holiday.date,
-      }));
-
-      const germanyHolidays = holidays[year].germany.map((holiday) => ({
-        year,
-        country: 'Germany',
-        holiday: holiday.holiday,
-        date: holiday.date,
-      }));
-
-      return [...turkeyHolidays, ...germanyHolidays];
+      const countries = ['turkey', 'germany', 'austria', 'switzerland'];
+      const holidayTypes = ['national', 'school'];
+      
+      return countries.flatMap(country => {
+        return holidayTypes.flatMap(type => {
+          const holidaysForType = holidays[year][country]?.[type] || [];
+          return holidaysForType.map((holiday) => ({
+            year,
+            country: country.charAt(0).toUpperCase() + country.slice(1),
+            holiday: holiday.holiday,
+            date: holiday.date,
+            type: type.charAt(0).toUpperCase() + type.slice(1)
+          }));
+        });
+      });
     }
     return [];
   });
@@ -40,7 +40,7 @@ export default function TabTwoScreen() {
   const renderHolidayItem = ({ item }) => (
     <View style={[styles.itemContainer, item.country === 'Turkey' ? styles.turkeyStyle : styles.germanyStyle]}>
       <Text style={styles.itemText}>
-        {item.date} - <Text style={styles.countryText}>{item.country}</Text>: {item.holiday}
+        {item.date} - <Text style={styles.countryText}>{item.country}</Text>: {item.holiday} ({item.type})
       </Text>
     </View>
   );
