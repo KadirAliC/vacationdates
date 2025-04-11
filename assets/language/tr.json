@@ -1,0 +1,21 @@
+{
+    "yearSelectionButton": "Yıl Seçimi",
+    "monthSelectionButton": "Ay Seçimi",
+    "goToTodayButton": "Bugüne Git",
+    "languageButton": "Dil Seçimi",
+    "languageModalTitle": "Dil Seçimi",
+    "languageModalCloseButton": "Kapat",
+    "languageModalTurkish": "Türkçe",
+    "languageModalGerman": "Almança",
+    "languageModalEnglish": "İngilizce",
+    "languageModalFrench": "Fransızca",
+    "swipeToChangeMonthsText": "Kaydırarak Ay Değiştir",
+    "languageModalClose": "Kapat",
+    "countryModalTitle": "Ülke Seçiniz",
+    "countryModalCloseButton": "Kapat",
+    "countryModalTurkey": "Türkiye",
+    "countryModalGermany": "Almanya",
+    "countryModalAustria": "Avusturya",
+    "countryModalSwitzerland": "İsviçre",
+    "countryModalClose": "Kapat"
+}

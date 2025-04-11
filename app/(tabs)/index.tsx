@@ -1,8 +1,12 @@
+import '../../assets/i18n';
 import { StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { useState, useMemo } from 'react';
 import { Text, View } from '@/components/Themed';
 import { Calendar } from 'react-native-calendars';
 import holidays from '../holidays.json';
+import { useTranslation } from 'react-i18next';
+
+
 
 const years = Array.from({ length: 6 }, (_, i) => (2025 + i).toString());
 const months = [
@@ -21,6 +25,7 @@ const months = [
 ];
 
 export default function TabOneScreen() {
+  const { t } = useTranslation();
   const [selectedYear, setSelectedYear] = useState('2025');
   const holidaysMap = useMemo(() => {
     const result = {};
@@ -155,11 +160,11 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, marginRight: 30, marginLeft: 30, backgroundColor: '#bfbfbf' }}>
         <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 1, marginRight: 10, backgroundColor: '#1E90FF' }]}>
-          <Text style={styles.buttonText}>Year Selection</Text>
+          <Text style={styles.buttonText}>{t('yearSelectionButton')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => setMonthModalVisible(true)} style={[styles.button, { flex: 1, marginLeft: 10, backgroundColor: '#1E90FF' }]}>
-          <Text style={styles.buttonText}>Month Selection</Text>
+          <Text style={styles.buttonText}>{t('monthSelectionButton')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -266,12 +271,12 @@ export default function TabOneScreen() {
             borderRadius={10}
           />
 
-          <Text style={{ alignSelf: 'center', marginBottom: 30, fontSize: 18, fontWeight: 'bold', color: 'black' }}>⬅️ Swipe to Change Months ➡️</Text>
+          <Text style={{ alignSelf: 'center', marginBottom: 30, fontSize: 18, fontWeight: 'bold', color: 'black' }}>⬅️ {t('swipeToChangeMonthsText')} ➡️</Text>
         </View>
 
         <View style={{ alignSelf: 'center', width: '40%', backgroundColor: '#bfbfbf' }}>
           <TouchableOpacity onPress={goToToday} style={[styles.button, { backgroundColor: 'green', borderColor: 'white', borderWidth: 1 }]}>
-            <Text style={styles.buttonText}>  Go to Today  </Text>
+            <Text style={styles.buttonText}>  {t('goToTodayButton')}  </Text>
           </TouchableOpacity>
         </View>
 

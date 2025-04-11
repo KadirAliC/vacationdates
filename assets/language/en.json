@@ -1,0 +1,21 @@
+{
+    "yearSelectionButton": "Year Selection",
+    "monthSelectionButton": "Month Selection",
+    "goToTodayButton": "Go to Today",
+    "languageButton": "Language Selection",
+    "languageModalTitle": "Language Selection",
+    "languageModalCloseButton": "Close",
+    "languageModalTurkish": "Turkish",
+    "languageModalGerman": "German",
+    "languageModalEnglish": "English",
+    "languageModalFrench": "French",
+    "swipeToChangeMonthsText": "Swipe to change months",
+    "languageModalClose": "Close",
+    "countryModalTitle": "Select a Country",
+    "countryModalCloseButton": "Close",
+    "countryModalTurkey": "Turkey",
+    "countryModalGermany": "Germany",
+    "countryModalAustria": "Austria",
+    "countryModalSwitzerland": "Switzerland",
+    "countryModalClose": "Close"
+}

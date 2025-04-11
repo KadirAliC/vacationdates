@@ -7,6 +7,8 @@ import { Pressable } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { useTranslation } from 'react-i18next';
+import i18n from 'i18next';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -17,6 +19,7 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
+  const { t } = useTranslation();
   const colorScheme = useColorScheme();
   const [countryModalVisible, setCountryModalVisible] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState('Turkey');
@@ -28,6 +31,7 @@ export default function TabLayout() {
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('Turkish');
   const handleLanguageSelect = (language: string) => {
+    i18n.changeLanguage(language);
     setSelectedLanguage(language);
     setLanguageModalVisible(false);
   };
@@ -75,21 +79,21 @@ export default function TabLayout() {
         <Modal transparent={true} visible={countryModalVisible} animationType="slide" onRequestClose={() => setCountryModalVisible(false)}>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>Select a Country</Text>
+              <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
               <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
-                <Text style={[styles.modalItem, styles.modalText]}>Turkey</Text>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalTurkey')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleCountrySelect('Germany')}>
-                <Text style={[styles.modalItem, styles.modalText]}>Germany</Text>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalGermany')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleCountrySelect('Austria')}>
-                <Text style={[styles.modalItem, styles.modalText]}>Austria</Text>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalAustria')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleCountrySelect('Switzerland')}>
-                <Text style={[styles.modalItem, styles.modalText]}>Switzerland</Text>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalSwitzerland')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setCountryModalVisible(false)} style={[styles.closeButton]}>
-                <Text style={styles.buttonText}>Close</Text>
+                <Text style={styles.buttonText}>{t('countryModalCloseButton')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -98,21 +102,21 @@ export default function TabLayout() {
         <Modal transparent={true} visible={languageModalVisible} animationType="slide" onRequestClose={() => setLanguageModalVisible(false)}>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>Select Language</Text>
-              <TouchableOpacity onPress={() => handleLanguageSelect('Turkish')}>
-                <Text style={[styles.modalItem, styles.modalText]}>Turkish</Text>
+              <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('languageModalTitle')}</Text>
+              <TouchableOpacity onPress={() => handleLanguageSelect('tr')}>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleLanguageSelect('German')}>
-                <Text style={[styles.modalItem, styles.modalText]}>German</Text>
+              <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalGerman')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleLanguageSelect('English')}>
-                <Text style={[styles.modalItem, styles.modalText]}>English</Text>
+              <TouchableOpacity onPress={() => handleLanguageSelect('en')}>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalEnglish')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleLanguageSelect('French')}>
-                <Text style={[styles.modalItem, styles.modalText]}>French</Text>
+              <TouchableOpacity onPress={() => handleLanguageSelect('fr')}>
+                <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalFrench')}</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => setLanguageModalVisible(false)} style={[styles.closeButton]}>
-                <Text style={styles.buttonText}>Close</Text>
+                <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
               </TouchableOpacity>
             </View>
           </View>
