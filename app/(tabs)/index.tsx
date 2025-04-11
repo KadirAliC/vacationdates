@@ -22,40 +22,76 @@ const months = [
 
 export default function TabOneScreen() {
   const [selectedYear, setSelectedYear] = useState('2025');
-  const events = {};
   const holidaysMap = useMemo(() => {
     const result = {};
     Object.keys(holidays).forEach((year) => {
       result[year] = {
-        turkey: holidays[year]['turkey'].reduce((acc, holiday) => {
-          acc[holiday.date] = holiday.holiday;
-          return acc;
-        }, {}),
-        germany: holidays[year]['germany'].reduce((acc, holiday) => {
-          acc[holiday.date] = holiday.holiday;
-          return acc;
-        }, {}),
+        turkey: {
+          national: holidays[year]['turkey']?.national?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {}),
+          school: holidays[year]['turkey']?.school?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {})
+        },
+        germany: {
+          national: holidays[year]['germany']?.national?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {})
+        },
+        austria: {
+          national: holidays[year]['austria']?.national?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {})
+        },
+        switzerland: {
+          national: holidays[year]['switzerland']?.national?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {}),
+          school: holidays[year]['switzerland']?.school?.reduce((acc, holiday) => {
+            acc[holiday.date] = holiday.holiday;
+            return acc;
+          }, {})
+        }
       };
     });
     return result;
   }, []);
 
-  Object.keys(holidays).forEach(year => {
-    const turkeyHolidays = holidays[year]['turkey'];
-    turkeyHolidays.forEach((holiday) => {
-      if (!events[holiday.date]) {
-        events[holiday.date] = { dots: [] };
-      }
-      events[holiday.date].dots.push({ key: 'holiday_turkey', color: 'red' });
+  const events = useMemo(() => {
+    const result = {};
+    Object.keys(holidays).forEach(year => {
+      // Turkey - National
+      (holidays[year]?.turkey?.national || []).forEach(holiday => {
+        result[holiday.date] = result[holiday.date] || { dots: [] };
+        result[holiday.date].dots.push({ key: 'holiday_turkey', color: 'red' });
+      });
+
+      // Germany - National
+      (holidays[year]?.germany?.national || []).forEach(holiday => {
+        result[holiday.date] = result[holiday.date] || { dots: [] };
+        result[holiday.date].dots.push({ key: 'holiday_germany', color: 'black' });
+      });
+
+      // Austria - National
+      (holidays[year]?.austria?.national || []).forEach(holiday => {
+        result[holiday.date] = result[holiday.date] || { dots: [] };
+        result[holiday.date].dots.push({ key: 'holiday_austria', color: 'blue' });
+      });
+
+      // Switzerland - National
+      (holidays[year]?.switzerland?.national || []).forEach(holiday => {
+        result[holiday.date] = result[holiday.date] || { dots: [] };
+        result[holiday.date].dots.push({ key: 'holiday_switzerland', color: 'green' });
+      });
     });
-    const germanyHolidays = holidays[year]['germany'];
-    germanyHolidays.forEach((holiday) => {
-      if (!events[holiday.date]) {
-        events[holiday.date] = { dots: [] };
-      }
-      events[holiday.date].dots.push({ key: 'holiday_germany', color: 'black' });
-    });
-  });
+    return result;
+  }, []);
 
   const today = new Date().toISOString().split('T')[0];
   const [currentDate, setCurrentDate] = useState(today);
@@ -88,19 +124,28 @@ export default function TabOneScreen() {
   const handleDayPress = (day) => {
     const date = day.dateString;
     const year = date.split('-')[0];
-    const turkeyHolidays = holidaysMap[year]?.turkey[date] || [];
-    const germanyHolidays = holidaysMap[year]?.germany[date] || [];
 
     let alertMessage = '';
-    if (turkeyHolidays.length > 0) {
-      alertMessage += `Turkey Holidays:\n${turkeyHolidays}\n`;
-    }
-    if (germanyHolidays.length > 0) {
-      alertMessage += `Germany Holidays:\n${germanyHolidays}`;
-    }
+
+    // Her ülkeyi kontrol et
+    const countries = ['turkey', 'germany', 'austria', 'switzerland'];
+    const holidayTypes = ['national', 'school'];
+
+    countries.forEach(country => {
+      holidayTypes.forEach(type => {
+        // Her ülkenin her tatil türünü kontrol et
+        const holiday = holidays[year]?.[country]?.[type]?.find(h => h.date === date);
+        if (holiday) {
+          if (!alertMessage.includes(country.toUpperCase())) {
+            alertMessage += `\n${country.toUpperCase()} Holidays:\n`;
+          }
+          alertMessage += `- ${holiday.holiday} (${type === 'national' ? 'National' : 'School'})\n`;
+        }
+      });
+    });
 
     if (alertMessage) {
-      Alert.alert(`Holidays on ${date}`, alertMessage);
+      Alert.alert(`Holidays on ${date}`, alertMessage.trim());
     } else {
       Alert.alert(`Holidays on ${date}`, `No holidays`);
     }
@@ -233,7 +278,7 @@ export default function TabOneScreen() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
