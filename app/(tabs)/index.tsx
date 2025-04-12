@@ -1,12 +1,11 @@
 import '../../assets/i18n';
 import { StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useContext } from 'react';
 import { Text, View } from '@/components/Themed';
 import { Calendar, CalendarList, ExpandableCalendar } from 'react-native-calendars';
 import holidays from '../holidays.json';
 import { useTranslation } from 'react-i18next';
-
-
+import { CountryContext } from './_layout';
 
 const years = Array.from({ length: 6 }, (_, i) => (2025 + i).toString());
 const months = [
@@ -26,6 +25,7 @@ const months = [
 
 export default function TabOneScreen() {
   const { t } = useTranslation();
+  const selectedCountry = useContext(CountryContext);
   const [selectedYear, setSelectedYear] = useState('2025');
   const holidaysMap = useMemo(() => {
     const result = {};
@@ -158,172 +158,104 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <Modal transparent={true} visible={yearModalVisible} animationType="slide" onRequestClose={() => setYearModalVisible(false)}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <FlatList
-              data={years}
-              renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => handleYearSelect(item)} style={styles.modalItem}>
-                  <Text style={styles.modalText}>{item}</Text>
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item}
-            />
-            <TouchableOpacity onPress={() => setYearModalVisible(false)} style={styles.closeButton}>
-              <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
-            </TouchableOpacity>
+      
+      <View style={styles.calendarContainer}>
+        <Modal transparent={true} visible={yearModalVisible} animationType="slide" onRequestClose={() => setYearModalVisible(false)}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <FlatList
+                data={years}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => handleYearSelect(item)} style={styles.modalItem}>
+                    <Text style={styles.modalText}>{item}</Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item}
+              />
+              <TouchableOpacity onPress={() => setYearModalVisible(false)} style={styles.closeButton}>
+                <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
-      <Modal transparent={true} visible={monthModalVisible} animationType="slide" onRequestClose={() => setMonthModalVisible(false)}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <FlatList
-              data={months}
-              renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => handleMonthSelect(item)} style={styles.modalItem}>
-                  <Text style={styles.modalText}>{item.name}</Text>  {/* Ay ismini burada gösteriyoruz */}
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item.number}
-            />
-            <TouchableOpacity onPress={() => setMonthModalVisible(false)} style={styles.closeButton}>
-              <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
-            </TouchableOpacity>
+        <Modal transparent={true} visible={monthModalVisible} animationType="slide" onRequestClose={() => setMonthModalVisible(false)}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <FlatList
+                data={months}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => handleMonthSelect(item)} style={styles.modalItem}>
+                    <Text style={styles.modalText}>{item.name}</Text>  {/* Ay ismini burada gösteriyoruz */}
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.number}
+              />
+              <TouchableOpacity onPress={() => setMonthModalVisible(false)} style={styles.closeButton}>
+                <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
-      <View style={{ backgroundColor: '#D8E8E8' }}>
-        <View style={{ height: '80%', width: '100%', alignSelf: 'center', backgroundColor: '#D8E8E8' }}>
+        <View style={{ backgroundColor: '#D8E8E8' }}>
+          <View style={{ height: '80%', width: '96%', alignSelf: 'center', backgroundColor: '#D8E8E8' }}>
 
-          {/* {months.map((month, index) => (
-            <Calendar
-              key={index}
-              current={month} // bu artık "YYYY-MM-DD" formatında string
-              hideExtraDays={true}
-              style={styles.calendar}
+            <CalendarList
+              key={calendarKey}
+              horizontal={true}
+              pagingEnabled={true}
+              scrollEnabled={true}
+              firstDay={1}
+
+              // Gösterilecek ay sayısı (örneğin: 12 ay = 1 yıl)
+              pastScrollRange={3}
+              futureScrollRange={59}
+
+              // İlk gösterilecek ay
+              current={currentDate}
+
+              // Ay başlıklarını göster
+              showScrollIndicator={true}
+
+              // Stil özelleştirme
+              theme={{
+                calendarBackground: '#D8E8E8',
+                monthTextColor: '#000',
+                arrowColor: '#000',
+                textMonthFontWeight: 'bold',
+                textMonthFontSize: 20,
+                textDayFontSize: 20,
+                weekVerticalMargin: 28
+              }}
+              markingType={'multi-dot'}
+              markedDates={{
+                ...events,
+                [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
+              }}
+              onDayPress={handleDayPress}
+              // borderRadius={10}
+              showScrollIndicator={false}
             />
-          ))} */}
 
-          <CalendarList
-            key={calendarKey}
+          </View>
 
-            horizontal={true}
-            pagingEnabled={true}
-            scrollEnabled={true}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18, backgroundColor: 'black', paddingLeft: 120, paddingRight: 120, bottom: -88, paddingBottom: 30, paddingTop: '10' }}>
+            <Text onPress={() => setYearModalVisible(true)} style={{ color: '#fe7210', fontSize: 16, fontWeight: 'bold', left: t('languageModalFrench') === 'Französisch' ? '-70' : '-90' }}>{t('yearSelectionButton')}</Text>
 
-            // Gösterilecek ay sayısı (örneğin: 12 ay = 1 yıl)
-            pastScrollRange={3}
-            futureScrollRange={59}
+            <TouchableOpacity onPress={goToToday}>
+              <Text style={{ color: '#fe7210', fontSize: 22, fontWeight: 'bold' }}>  {t('goToTodayButton')}  </Text>
+            </TouchableOpacity>
 
-            // İlk gösterilecek ay
-            current={currentDate}
+            <Text onPress={() => setMonthModalVisible(true)} style={{ color: '#fe7210', fontSize: 16, fontWeight: 'bold', alignSelf: 'right', right: t('languageModalFrench') === 'Französisch' ? '-70' : '-90' }}>{t('monthSelectionButton')}</Text>
+          </View>
 
-            // Ay başlıklarını göster
-            showScrollIndicator={true}
+          <View style={{ position: 'absolute', bottom: -70, left: -80, right: -80, backgroundColor: 'black', paddingBottom: 30 }}>
+            {/* <Text style={{ alignSelf: 'center', fontSize: 12, fontWeight: '300', color: 'white' }}>{selectedCountry}</Text> */}
+            <Text style={{ alignSelf: 'center', fontSize: 12, fontWeight: '300', color: 'white' }}>{'<< ' + t('swipeToChangeMonthsText') + ' >>'}</Text>
+          </View>
 
-            // Stil özelleştirme
-            theme={{
-              calendarBackground: '#D8E8E8',
-              monthTextColor: '#000',
-              arrowColor: '#000',
-              textMonthFontWeight: 'bold',
-              textMonthFontSize: 20,
-            }}
-            markingType={'multi-dot'}
-            markedDates={{
-              ...events,
-              [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
-            }}
-            onDayPress={handleDayPress}
-            // borderRadius={10}
-            showScrollIndicator={false}
-          />
-
-          {/* 
-          ilk takvimim
-          <Calendar
-            key={calendarKey}
-            current={currentDate}
-            enableSwipeMonths={true}
-            firstDay={1}
-            minDate="2025-01-01"
-            maxDate="2030-12-31"
-            style={{ height: '90%', width: '140%', alignSelf: 'center' }}
-            theme={{
-              'stylesheet.day.basic': {
-                today: {
-                  backgroundColor: '#00adf5',
-                  borderRadius: 20, // Daha yuvarlak bir görünüm sağlar
-                  height: 35, // Çemberin boyutunu arttırır
-                  width: 35,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  alignSelf: 'center',
-                },
-                todayText: {
-                  color: '#ffffff', // Bugünün yazısını beyaz yap
-                  fontWeight: 'bold',
-                  fontSize: 18, // Daha belirgin hale getirmek için
-                }
-              },
-              'stylesheet.calendar.header': {
-                dayTextAtIndex5: {
-                  color: 'green',
-                  fontWeight: 'bold'
-                },
-                dayTextAtIndex6: {
-                  color: 'green',
-                  fontWeight: 'bold'
-                }
-              },
-              backgroundColor: '#ffffff',
-              calendarBackground: '#D8E8E8',
-              selectedDayBackgroundColor: '#00adf5',
-              selectedDayTextColor: '#ffffff',
-              todayTextColor: '#ffffff',
-              dayTextColor: 'black',
-              textDisabledColor: '#c5c0c9',
-              dotColor: '#00adf5',
-              selectedDotColor: '#ffffff',
-              arrowColor: '#fe7210',
-              disabledArrowColor: '#d9e1e8',
-              monthTextColor: 'black',
-              indicatorColor: '#D6CBA4',
-              textDayFontSize: 18,
-              textMonthFontSize: 16,
-              textMonthFontWeight: 'bold',
-              textDayHeaderFontSize: 15,
-              textDayHeaderFontWeight: 'bold',
-            }}
-            markingType={'multi-dot'}
-            markedDates={{
-              ...events,
-              [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
-            }}
-            onDayPress={handleDayPress}
-            borderRadius={10}
-          /> */}
         </View>
-
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18, backgroundColor: 'black', paddingLeft: 120, paddingRight: 120, bottom: -88, paddingBottom: 30, paddingTop: '10' }}>
-          <Text onPress={() => setYearModalVisible(true)} style={{ color: '#fe7210', fontSize: 16, fontWeight: 'bold', left: t('languageModalFrench') === 'Französisch' ? '-70' : '-90' }}>{t('yearSelectionButton')}</Text>
-
-          <TouchableOpacity onPress={goToToday}>
-            <Text style={{ color: '#fe7210', fontSize: 22, fontWeight: 'bold' }}>  {t('goToTodayButton')}  </Text>
-          </TouchableOpacity>
-
-          <Text onPress={() => setMonthModalVisible(true)} style={{ color: '#fe7210', fontSize: 16, fontWeight: 'bold', alignSelf: 'right', right: t('languageModalFrench') === 'Französisch' ? '-70' : '-90' }}>{t('monthSelectionButton')}</Text>
-        </View>
-
-        <View style={{ position: 'absolute', bottom: -48, left: -80, right: -80, backgroundColor: 'black', paddingBottom: 30 }}>
-          <Text style={{ alignSelf: 'center', fontSize: 12, fontWeight: '300', color: 'white' }}>{'<< ' + t('swipeToChangeMonthsText') + ' >>'}</Text>
-            
-        </View>
-
       </View>
     </View>
   );
@@ -378,5 +310,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     alignItems: 'center',
+  },
+  countryDisplay: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#D8E8E8',
+  },
+  countryText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  calendarContainer: {
+    flex: 1,
+    backgroundColor: '#D8E8E8',
   },
 });
