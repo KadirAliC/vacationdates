@@ -128,11 +128,14 @@ export default function TabLayout() {
           // Disable the static render of the header on web
           // to prevent a hydration error in React Navigation v6.
           headerShown: useClientOnlyValue(false, true),
+          tabBarStyle: {
+            backgroundColor: "black",
+          },
         }}>
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Calendar',
+            title: t('calendar'),
             tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
             headerRight: () => (
               <>
@@ -179,7 +182,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="two"
           options={{
-            title: 'Holiday List',
+            title: t('holidayList'),
             tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
             headerTitleStyle: {
               color: colorScheme === 'dark' ? '#fff' : '#000',

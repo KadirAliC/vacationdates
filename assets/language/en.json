@@ -1,7 +1,7 @@
 {
-    "yearSelectionButton": "Year Selection",
-    "monthSelectionButton": "Month Selection",
-    "goToTodayButton": "Go to Today",
+    "yearSelectionButton": "Year",
+    "monthSelectionButton": "Month",
+    "goToTodayButton": "Today",
     "languageButton": "Language Selection",
     "languageModalTitle": "Language Selection",
     "languageModalCloseButton": "Close",
@@ -17,5 +17,7 @@
     "countryModalGermany": "Germany",
     "countryModalAustria": "Austria",
     "countryModalSwitzerland": "Switzerland",
-    "countryModalClose": "Close"
+    "countryModalClose": "Close",
+    "calendar": "Calendar",
+    "holidayList": "Holiday List"
 }

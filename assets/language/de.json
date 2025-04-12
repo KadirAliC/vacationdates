@@ -13,5 +13,7 @@
     "countryModalGermany": "Deutsch",
     "countryModalAustria": "Österreich",
     "countryModalSwitzerland": "Schweiz",
-    "countryModalClose": "Schließen"
+    "countryModalClose": "Schließen",
+    "calendar": "Kalender",
+    "holidayList": "Feiertagsliste"
 }

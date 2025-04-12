@@ -20,7 +20,9 @@
           {"date": "2025-10-28", "holiday": "Republic Day Eve", "day": "Tuesday"},
           {"date": "2025-10-29", "holiday": "Republic Day", "day": "Wednesday"},
           {"date": "2025-12-31", "holiday": "New Year's Eve", "day": "Wednesday"}
-        ]
+        ],
+        "school":[],
+        "religiousHoliday":[]
       },
       "germany": {
           "national": [
@@ -33,7 +35,9 @@
             {"date": "2025-10-03", "holiday": "Tag der Deutschen Einheit (German Unity Day)", "day": "Friday"},
             {"date": "2025-12-25", "holiday": "Erster Weihnachtstag (Christmas Day)", "day": "Thursday"},
             {"date": "2025-12-26", "holiday": "Zweiter Weihnachtstag (Boxing Day)", "day": "Friday"}
-        ]
+        ],
+        "school":[],
+        "religiousHoliday":[]
       },
       "austria": {
         "national": [
@@ -45,7 +49,8 @@
           {"date": "2025-12-25", "holiday": "Christmas Day", "day": "Thursday"},
           {"date": "2025-12-26", "holiday": "St. Stephen's Day", "day": "Friday"}
         ],
-        "school":[]
+        "school":[],
+        "religiousHoliday":[]
       },
       "switzerland": {
         "national": [
@@ -55,7 +60,9 @@
           {"date": "2025-12-08", "holiday": "Immaculate Conception of Mary", "day": "Monday"},
           {"date": "2025-12-25", "holiday": "Christmas Day", "day": "Thursday"},
           {"date": "2025-12-26", "holiday": "St. Stephen's Day", "day": "Friday"}
-        ]
+        ],
+        "school":[],
+        "religiousHoliday":[]
       }
     },
     "2026": {
@@ -79,7 +86,9 @@
           {"date": "2026-10-28", "holiday": "Republic Day Eve", "day": "Wednesday"},
           {"date": "2026-10-29", "holiday": "Republic Day", "day": "Thursday"},
           {"date": "2026-12-31", "holiday": "New Year's Eve", "day": "Thursday"}
-      ]
+      ],
+      "school":[],
+      "religiousHoliday":[]
       },
       "germany": {
           "national": [
@@ -92,7 +101,9 @@
             {"date": "2026-10-03", "holiday": "Tag der Deutschen Einheit (German Unity Day)", "day": "Saturday"},
             {"date": "2026-12-25", "holiday": "Erster Weihnachtstag (Christmas Day)", "day": "Friday"},
             {"date": "2026-12-26", "holiday": "Zweiter Weihnachtstag (Boxing Day)", "day": "Saturday"}
-          ]
+          ],
+          "school":[],
+          "religiousHoliday":[]
       },
       "austria": {
         "national": [
@@ -103,7 +114,9 @@
           {"date": "2026-05-25", "holiday": "Pfingstmontag (Pentecost Monday)", "day": "Monday"},
           {"date": "2026-06-04", "holiday": "Corpus Christi", "day": "Saturday"},
           {"date": "2026-08-15", "holiday": "Mariä Himmelfahrt (Assumption Day)", "day": "Friday"}
-        ]
+        ],
+        "school":[],
+        "religiousHoliday":[]
       }
       
     }

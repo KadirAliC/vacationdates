@@ -6,7 +6,7 @@
     "languageModalTitle": "Dil Seçimi",
     "languageModalCloseButton": "Kapat",
     "languageModalTurkish": "Türkçe",
-    "languageModalGerman": "Almança",
+    "languageModalGerman": "Almanca",
     "languageModalEnglish": "İngilizce",
     "languageModalFrench": "Fransızca",
     "swipeToChangeMonthsText": "Kaydırarak Ay Değiştir",
@@ -17,5 +17,7 @@
     "countryModalGermany": "Almanya",
     "countryModalAustria": "Avusturya",
     "countryModalSwitzerland": "İsviçre",
-    "countryModalClose": "Kapat"
+    "countryModalClose": "Kapat",
+    "calendar": "Takvim",
+    "holidayList": "Tatil Listesi"
 }

@@ -2,8 +2,10 @@ import { StyleSheet, FlatList, View, Modal, TouchableOpacity } from 'react-nativ
 import { Text } from '@/components/Themed';
 import holidays from '../holidays.json';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function TabTwoScreen() {
+  const { t } = useTranslation();
   // Tatil verilerini düz bir liste haline getiriyoruz
   const [selectedYear, setSelectedYear] = useState(Object.keys(holidays)[0]);
   const [yearModalVisible, setYearModalVisible] = useState(false);
@@ -50,7 +52,7 @@ export default function TabTwoScreen() {
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
         <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 0, width: 200 }]}> 
           <Text style={styles.buttonText}>-{selectedYear}- {'\n'}</Text>
-          <Text style={styles.buttonText}>Choose Year</Text>
+          <Text style={styles.buttonText}>{t('yearSelectionButton')}</Text>
         </TouchableOpacity>
       </View>
 

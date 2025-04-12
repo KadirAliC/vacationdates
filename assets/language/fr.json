@@ -1,5 +1,8 @@
 {
     "languageModalTitle": "Sprachauswahl",
+    "yearSelectionButton": "Année",
+    "monthSelectionButton": "Mois",
+    "goToTodayButton": "Aujourd'hui",
     "languageModalTurkish": "Türkisch",
     "languageModalGerman": "Deutsch",
     "languageModalEnglish": "Englisch",
@@ -12,5 +15,7 @@
     "countryModalGermany": "Deutsch",
     "countryModalAustria": "Österreich",
     "countryModalSwitzerland": "Schweiz",
-    "countryModalClose": "Schließen"
+    "countryModalClose": "Fermer",
+    "calendar": "Calendrier",
+    "holidayList": "Liste de Vacances"
 }
