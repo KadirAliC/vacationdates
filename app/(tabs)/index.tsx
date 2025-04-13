@@ -9,7 +9,7 @@ import { CountryContext, AppearanceContext } from './_layout';
 
 export default function TabOneScreen() {
   const selectedCountry = useContext(CountryContext);
-  const appearance = useContext(AppearanceContext);
+  const { appearance, setAppearance } = useContext(AppearanceContext);
   const { t } = useTranslation();
   const months = [
     { number: '01', name: `1. ${t('january')}` },
@@ -131,6 +131,16 @@ export default function TabOneScreen() {
 
   const today = new Date().toISOString().split('T')[0];
   const [currentDate, setCurrentDate] = useState(today);
+  const currentDatePlus1 = new Date(today);
+  const currentDatePlus2 = new Date(today);
+  const currentDatePlus3 = new Date(today);
+  const currentDatePlus4 = new Date(today);
+  const currentDatePlus5 = new Date(today);
+  currentDatePlus1.setMonth(currentDatePlus1.getMonth() + 1);
+  currentDatePlus2.setMonth(currentDatePlus1.getMonth() + 2);
+  currentDatePlus3.setMonth(currentDatePlus1.getMonth() + 3);
+  currentDatePlus4.setMonth(currentDatePlus1.getMonth() + 4);
+  currentDatePlus5.setMonth(currentDatePlus1.getMonth() + 5);
   const [calendarKey, setCalendarKey] = useState(0);
   const [yearModalVisible, setYearModalVisible] = useState(false);
   const [monthModalVisible, setMonthModalVisible] = useState(false);
@@ -151,14 +161,11 @@ export default function TabOneScreen() {
     setCalendarKey(prevKey => prevKey + 1);
     setMonthModalVisible(false);
   };
-
   const goToToday = () => {
-    console.log(selectedCountry);
-    console.log(appearance);
     setCurrentDate(today);
     setCalendarKey(prevKey => prevKey + 1);
+    setAppearance('one'); // Set the appearance to "one"
   };
-
   const handleDayPress = (day: { dateString: string }) => {
     const date = day.dateString;
     const year = date.split('-')[0];
@@ -372,7 +379,7 @@ export default function TabOneScreen() {
               futureScrollRange={59}
 
               // İlk gösterilecek ay
-              current={'2025-05-12'}
+              current={currentDatePlus1}
 
               // Ay başlıklarını göster
               showScrollIndicator={true}
@@ -411,7 +418,7 @@ export default function TabOneScreen() {
               futureScrollRange={59}
 
               // İlk gösterilecek ay
-              current={'2025-06-12'}
+              current={currentDatePlus2}
 
               // Ay başlıklarını göster
               showScrollIndicator={true}
@@ -437,11 +444,222 @@ export default function TabOneScreen() {
             />
           </View>}
 
-          {appearance === 'six' && <View style={{ top: -4, height: '80%', width: '125', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
 
-            
+          {appearance === 'six' && (
+            <View style={{ backgroundColor: '#D8E8E8', top: -4, height: '80%', alignSelf: 'center', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
+              <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ width: '49%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    key={calendarKey}
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDate}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      // [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+                <View style={{ width: '49%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    key={calendarKey}
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDatePlus1}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+              </View>
+              <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+                <View style={{ width: '48%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDatePlus2}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+                <View style={{ width: '48%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDatePlus3}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+              </View>
+              <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+                <View style={{ width: '48%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDatePlus4}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+                <View style={{ width: '48%', backgroundColor: '#D8E8E8' }}>
+                  <CalendarList
+                    horizontal={true}
+                    pagingEnabled={false}
+                    scrollEnabled={false}
+                    firstDay={1}
+                    calendarHeight={100}
+                    calendarWidth={180}
+                    pastScrollRange={3}
+                    futureScrollRange={59}
+                    current={currentDatePlus5}
+                    showScrollIndicator={true}
+                    theme={{
+                      calendarBackground: '#D8E8E8',
+                      monthTextColor: '#000',
+                      arrowColor: '#000',
+                      textMonthFontWeight: 'bold',
+                      textMonthFontSize: 13,
+                      textDayFontSize: 14,
+                      weekVerticalMargin: -6,
+                      textDayHeaderFontSize: 1,
+                      textSectionTitleDisabledColor: 'transparent',
+                      textSectionTitleColor: 'transparent'
+                    }}
+                    markingType={'multi-dot'}
+                    markedDates={{
+                      ...events,
+                      [today]: { selected: true, selectedColor: '#fe7210' }
+                    }}
+                    onDayPress={handleDayPress}
+                    showScrollIndicator={false}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
 
-          </View>}
+          {appearance === 'oneYear' && (
+            <View style={{ backgroundColor: '#D8E8E8', top: -4, height: '80%', alignSelf: 'center', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
+            </View>
+          )}
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18, backgroundColor: 'black', paddingLeft: 120, paddingRight: 120, bottom: -88, paddingBottom: 30, paddingTop: '10' }}>
             <Text onPress={() => setYearModalVisible(true)} style={{ color: '#fe7210', fontSize: 16, fontWeight: 'bold', left: t('languageModalFrench') === 'Französisch' ? '-70' : '-90' }}>{t('yearSelectionButton')}</Text>

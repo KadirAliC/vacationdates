@@ -19,7 +19,10 @@ function TabBarIcon(props: {
 }
 
 export const CountryContext = createContext<string>('Turkey');
-export const AppearanceContext = createContext<string>('one');
+export const AppearanceContext = createContext<{ appearance: string; setAppearance: (value: string) => void }>({
+  appearance: 'one',
+  setAppearance: () => {}
+});
 
 export default function TabLayout() {
   const { t } = useTranslation();
@@ -85,8 +88,8 @@ export default function TabLayout() {
   });
 
   return (
-    <CountryContext.Provider value={selectedCountry}>
-      <AppearanceContext.Provider value={appearance}>
+    <AppearanceContext.Provider value={{ appearance, setAppearance }}>
+      <CountryContext.Provider value={selectedCountry}>
         <View style={{ flex: 1 }}>
           <View>
             <Modal transparent={true} visible={appearanceModalVisible} animationType="slide" onRequestClose={() => setAppearanceModalVisible(false)}>
@@ -240,8 +243,8 @@ export default function TabLayout() {
             />
           </Tabs>
         </View>
-      </AppearanceContext.Provider>
-    </CountryContext.Provider>
+      </CountryContext.Provider>
+    </AppearanceContext.Provider>
   );
 
 }
