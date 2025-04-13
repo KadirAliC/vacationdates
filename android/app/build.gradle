@@ -86,7 +86,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.vacationdates"
+    namespace 'com.kadirali.vacationdates'
     defaultConfig {
         applicationId 'com.kadirali.vacationdates'
         minSdkVersion rootProject.ext.minSdkVersion
