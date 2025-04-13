@@ -95,7 +95,7 @@ export default function TabLayout() {
             <Modal transparent={true} visible={appearanceModalVisible} animationType="slide" onRequestClose={() => setAppearanceModalVisible(false)}>
               <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                  <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
+                  <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('appearanceModalTitle')}</Text>
                   <TouchableOpacity onPress={() => handleAppearanceSelect('one')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('appearanceModalOneMonth')}</Text>
                   </TouchableOpacity>

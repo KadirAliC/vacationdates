@@ -36,5 +36,6 @@
     "appearanceModalThreeMonths": "Three Months",
     "appearanceModalSixMonths": "Six Months",
     "appearanceModalOneYear": "One Year",
-    "appearanceModalCloseButton": "Close"
+    "appearanceModalCloseButton": "Close",
+    "appearanceModalTitle": "Appearance Selection"
 }
