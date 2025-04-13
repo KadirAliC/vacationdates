@@ -1,7 +1,6 @@
 import '../../assets/i18n';
-import { StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { Text, View, StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { useState, useMemo, useContext, useEffect } from 'react';
-import { Text, View } from '@/components/Themed';
 import { CalendarList, Agenda } from 'react-native-calendars';
 import holidays from '../holidays.json';
 import { useTranslation } from 'react-i18next';
@@ -391,7 +390,7 @@ export default function TabOneScreen() {
               futureScrollRange={59}
 
               // İlk gösterilecek ay
-              current={currentDatePlus1}
+              current={currentDatePlus1.toISOString().split('T')[0]}
 
               // Ay başlıklarını göster
               showScrollIndicator={true}
@@ -430,7 +429,7 @@ export default function TabOneScreen() {
               futureScrollRange={59}
 
               // İlk gösterilecek ay
-              current={currentDatePlus2}
+              current={currentDatePlus2.toISOString().split('T')[0]}
 
               // Ay başlıklarını göster
               showScrollIndicator={true}
@@ -505,7 +504,7 @@ export default function TabOneScreen() {
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus1}
+                    current={currentDatePlus1.toISOString().split('T')[0]}
                     showScrollIndicator={true}
                     theme={{
                       calendarBackground: '#D8E8E8',
@@ -540,7 +539,7 @@ export default function TabOneScreen() {
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus2}
+                    current={currentDatePlus2.toISOString().split('T')[0]}
                     showScrollIndicator={true}
                     theme={{
                       calendarBackground: '#D8E8E8',
@@ -573,7 +572,7 @@ export default function TabOneScreen() {
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus3}
+                    current={currentDatePlus3.toISOString().split('T')[0]}
                     showScrollIndicator={true}
                     theme={{
                       calendarBackground: '#D8E8E8',
@@ -608,7 +607,7 @@ export default function TabOneScreen() {
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus4}
+                    current={currentDatePlus4.toISOString().split('T')[0]}
                     showScrollIndicator={true}
                     theme={{
                       calendarBackground: '#D8E8E8',
@@ -641,7 +640,7 @@ export default function TabOneScreen() {
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus5}
+                    current={currentDatePlus5.toISOString().split('T')[0]}
                     showScrollIndicator={true}
                     theme={{
                       calendarBackground: '#D8E8E8',
@@ -713,7 +712,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus1}
+                    current={currentDatePlus1.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -744,7 +743,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus2}
+                    current={currentDatePlus2.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -777,7 +776,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus3}
+                    current={currentDatePlus3.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -808,7 +807,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus4}
+                    current={currentDatePlus4.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -839,7 +838,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus5}
+                    current={currentDatePlus5.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -871,7 +870,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus6}
+                    current={currentDatePlus6.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -902,7 +901,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus7}
+                    current={currentDatePlus7.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -933,7 +932,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus8}
+                    current={currentDatePlus8.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -965,7 +964,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus9}
+                    current={currentDatePlus9.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
@@ -996,7 +995,7 @@ export default function TabOneScreen() {
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
-                    current={currentDatePlus10}
+                    current={currentDatePlus10.toISOString().split('T')[0]}
                     theme={{
                       calendarBackground: '#D8E8E8',
                       monthTextColor: '#000',
