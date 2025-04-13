@@ -1,123 +1,261 @@
 {
-    "2025": {
-      "turkey": {
-        "national":[
-          {"date": "2025-01-01", "holiday": "New Year", "day": "Thursday"},
-          {"date": "2025-03-29", "holiday": "Ramadan Feast Eve", "day": "Saturday"},
-          {"date": "2025-03-30", "holiday": "Ramadan Feast 1st Day", "day": "Sunday"},
-          {"date": "2025-03-31", "holiday": "Ramadan Feast 2nd Day", "day": "Monday"},
-          {"date": "2025-04-01", "holiday": "Ramadan Feast 3rd Day", "day": "Tuesday"},
-          {"date": "2025-04-23", "holiday": "National Sovereignty and Children's Day", "day": "Wednesday"},
-          {"date": "2025-05-01", "holiday": "May 1st Labor and Solidarity Day", "day": "Thursday"},
-          {"date": "2025-05-19", "holiday": "Commemoration of Atatürk, Youth and Sports Day", "day": "Monday"},
-          {"date": "2025-06-05", "holiday": "Eve of Sacrifice Feast", "day": "Thursday"},
-          {"date": "2025-06-06", "holiday": "Sacrifice Feast 1st Day", "day": "Friday"},
-          {"date": "2025-06-07", "holiday": "Sacrifice Feast 2nd Day", "day": "Saturday"},
-          {"date": "2025-06-08", "holiday": "Sacrifice Feast 3rd Day", "day": "Sunday"},
-          {"date": "2025-06-09", "holiday": "Sacrifice Feast 4th Day", "day": "Monday"},
-          {"date": "2025-07-15", "holiday": "Democracy and National Unity Day", "day": "Tuesday"},
-          {"date": "2025-08-30", "holiday": "Victory Day", "day": "Saturday"},
-          {"date": "2025-10-28", "holiday": "Republic Day Eve", "day": "Tuesday"},
-          {"date": "2025-10-29", "holiday": "Republic Day", "day": "Wednesday"},
-          {"date": "2025-12-31", "holiday": "New Year's Eve", "day": "Wednesday"}
+  "2025": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2025-04-05",
+          "holiday": "Neujahr (New Year)",
+          "day": "Monday"
+        },
+        {
+          "date": "2025-04-04",
+          "holiday": "ulusal bayram",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-05-04",
+          "holiday": "ulusal bayram",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-06-05",
+          "holiday": "ulusal bayram",
+          "day": "Wednesday"
+        }
+      ],
+      "School": {
+        "STATE1": [
+          {
+            "date": "2025-04-10",
+            "holiday": "Schulferien 1. Tag",
+            "day": "Monday"
+          },
+          {
+            "date": "2025-06-04",
+            "holiday": "okul tatili",
+            "day": "Tuesday"
+          }
         ],
-        "school":[],
-        "religiousHoliday":[]
+        "STATE2": [
+          {
+            "date": "2025-04-12",
+            "holiday": "Schulferien 3. Tag",
+            "day": "Wednesday"
+          }
+        ]
       },
-      "germany": {
-          "national": [
-            {"date": "2025-01-01", "holiday": "Neujahr (New Year)", "day": "Wednesday"},
-            {"date": "2025-04-18", "holiday": "Karfreitag (Holy Friday)", "day": "Friday"},
-            {"date": "2025-04-21", "holiday": "Ostermontag (Easter Monday)", "day": "Monday"},
-            {"date": "2025-05-01", "holiday": "Tag der Arbeit (Labor Day)", "day": "Thursday"},
-            {"date": "2025-05-29", "holiday": "Christi Himmelfahrt (Ascension Day)", "day": "Thursday"},
-            {"date": "2025-06-09", "holiday": "Pfingstmontag (Pentecost Monday)", "day": "Monday"},
-            {"date": "2025-10-03", "holiday": "Tag der Deutschen Einheit (German Unity Day)", "day": "Friday"},
-            {"date": "2025-12-25", "holiday": "Erster Weihnachtstag (Christmas Day)", "day": "Thursday"},
-            {"date": "2025-12-26", "holiday": "Zweiter Weihnachtstag (Boxing Day)", "day": "Friday"}
-        ],
-        "school":[],
-        "religiousHoliday":[]
-      },
-      "austria": {
-        "national": [
-          {"date": "2025-01-01", "holiday": "Neujahr (New Year)", "day": "Wednesday"},
-          {"date": "2025-10-26", "holiday": "Austuria National Day", "day": "Sunday"},
-          {"date": "2025-11-01", "holiday": "All Saints' Day", "day": "Saturday"},
-          {"date": "2025-11-02", "holiday": "All Souls' Day", "day": "Sunday"},
-          {"date": "2025-12-08", "holiday": "Immaculate Conception of Mary", "day": "Monday"},
-          {"date": "2025-12-25", "holiday": "Christmas Day", "day": "Thursday"},
-          {"date": "2025-12-26", "holiday": "St. Stephen's Day", "day": "Friday"}
-        ],
-        "school":[],
-        "religiousHoliday":[]
-      },
-      "switzerland": {
-        "national": [
-          {"date": "2025-01-01", "holiday": "Neujahr (New Year)", "day": "Wednesday"},
-          {"date": "2025-11-01", "holiday": "All Saints' Day", "day": "Saturday"},
-          {"date": "2025-11-02", "holiday": "All Souls' Day", "day": "Sunday"},
-          {"date": "2025-12-08", "holiday": "Immaculate Conception of Mary", "day": "Monday"},
-          {"date": "2025-12-25", "holiday": "Christmas Day", "day": "Thursday"},
-          {"date": "2025-12-26", "holiday": "St. Stephen's Day", "day": "Friday"}
-        ],
-        "school":[],
-        "religiousHoliday":[]
+      "Religious": {
+        "STATE1": [
+          {
+            "date": "2025-04-15",
+            "holiday": "DIN BAYRAM",
+            "day": "Friday"
+          },
+          {
+            "date": "2025-04-16",
+            "holiday": "DIN BAYRAM",
+            "day": "Saturday"
+          },
+          {
+            "date": "2025-04-04",
+            "holiday": "dini bayram",
+            "day": "Tuesday"
+          }
+        ]
       }
     },
-    "2026": {
-      "turkey": {
-        "national": [
-          {"date": "2026-01-01", "holiday": "New Year", "day": "Friday"},
-          {"date": "2026-03-19", "holiday": "Ramadan Feast Eve", "day": "Thursday"},
-          {"date": "2026-03-20", "holiday": "Ramadan Feast 1st Day", "day": "Friday"},
-          {"date": "2026-03-21", "holiday": "Ramadan Feast 2nd Day", "day": "Saturday"},
-          {"date": "2026-03-22", "holiday": "Ramadan Feast 3rd Day", "day": "Sunday"},
-          {"date": "2026-04-23", "holiday": "National Sovereignty and Children's Day", "day": "Thursday"},
-          {"date": "2026-05-01", "holiday": "May 1st Labor and Solidarity Day", "day": "Friday"},
-          {"date": "2026-05-19", "holiday": "Commemoration of Atatürk, Youth and Sports Day", "day": "Tuesday"},
-          {"date": "2026-05-26", "holiday": "Eve of Sacrifice Feast", "day": "Tuesday"},
-          {"date": "2026-05-27", "holiday": "Sacrifice Feast 1st Day", "day": "Wednesday"},
-          {"date": "2026-05-28", "holiday": "Sacrifice Feast 2nd Day", "day": "Thursday"},
-          {"date": "2026-05-29", "holiday": "Sacrifice Feast 3rd Day", "day": "Friday"},
-          {"date": "2026-05-30", "holiday": "Sacrifice Feast 4th Day", "day": "Saturday"},
-          {"date": "2026-07-15", "holiday": "Democracy and National Unity Day", "day": "Thursday"},
-          {"date": "2026-08-30", "holiday": "Victory Day", "day": "Sunday"},
-          {"date": "2026-10-28", "holiday": "Republic Day Eve", "day": "Wednesday"},
-          {"date": "2026-10-29", "holiday": "Republic Day", "day": "Thursday"},
-          {"date": "2026-12-31", "holiday": "New Year's Eve", "day": "Thursday"}
+    "Austria": {
+      "National": [
+        {
+          "date": "2025-04-05",
+          "holiday": "Austria national",
+          "day": "Monday"
+        }
       ],
-      "school":[],
-      "religiousHoliday":[]
+      "School": {
+        "STATE1": [
+          {
+            "date": "2025-04-05",
+            "holiday": "Austria school",
+            "day": "Monday"
+          }
+        ]
       },
-      "germany": {
-          "national": [
-            {"date": "2026-01-01", "holiday": "Neujahr (New Year)", "day": "Friday"},
-            {"date": "2026-04-02", "holiday": "Karfreitag (Holy Friday)", "day": "Friday"},
-            {"date": "2026-04-05", "holiday": "Ostermontag (Easter Monday)", "day": "Monday"},
-            {"date": "2026-05-01", "holiday": "Tag der Arbeit (Labor Day)", "day": "Friday"},
-            {"date": "2026-05-13", "holiday": "Christi Himmelfahrt (Ascension Day)", "day": "Thursday"},
-            {"date": "2026-05-24", "holiday": "Pfingstmontag (Pentecost Monday)", "day": "Monday"},
-            {"date": "2026-10-03", "holiday": "Tag der Deutschen Einheit (German Unity Day)", "day": "Saturday"},
-            {"date": "2026-12-25", "holiday": "Erster Weihnachtstag (Christmas Day)", "day": "Friday"},
-            {"date": "2026-12-26", "holiday": "Zweiter Weihnachtstag (Boxing Day)", "day": "Saturday"}
-          ],
-          "school":[],
-          "religiousHoliday":[]
-      },
-      "austria": {
-        "national": [
-          {"date": "2026-01-01", "holiday": "Neujahr (New Year)", "day": "Friday"},
-          {"date": "2026-01-06", "holiday": "Heiliger Drei Könige (Three Kings Day)", "day": "Tuesday"},
-          {"date": "2026-05-01", "holiday": "Tag der Arbeit (Labor Day)", "day": "Friday"},
-          {"date": "2026-05-14", "holiday": "Christi Himmelfahrt (Ascension Day)", "day": "Tuesday"},
-          {"date": "2026-05-25", "holiday": "Pfingstmontag (Pentecost Monday)", "day": "Monday"},
-          {"date": "2026-06-04", "holiday": "Corpus Christi", "day": "Saturday"},
-          {"date": "2026-08-15", "holiday": "Mariä Himmelfahrt (Assumption Day)", "day": "Friday"}
-        ],
-        "school":[],
-        "religiousHoliday":[]
+      "Religious": {
+        "STATE1": [
+          {
+            "date": "2025-04-05",
+            "holiday": "Austria religious",
+            "day": "Friday"
+          }
+        ]
       }
-      
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2025-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2025-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2025-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2025-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2025-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2025-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    }
+  },
+  "2026": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-04-02",
+          "holiday": "Karfreitag (Holy Friday)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-04-05",
+          "holiday": "Ostermontag (Easter Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-13",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-05-24",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-10-03",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "Zweiter Weihnachtstag (Boxing Day)",
+          "day": "Saturday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Austria": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-01-06",
+          "holiday": "Heiliger Drei Könige (Three Kings Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-14",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-25",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-06-04",
+          "holiday": "Corpus Christi",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-08-15",
+          "holiday": "Mariä Himmelfahrt (Assumption Day)",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2026-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2026-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
     }
   }
+}

@@ -19,16 +19,24 @@ function TabBarIcon(props: {
 }
 
 export const CountryContext = createContext<string>('Turkey');
+export const AppearanceContext = createContext<string>('one');
 
 export default function TabLayout() {
   const { t } = useTranslation();
   const colorScheme = useColorScheme();
   const [countryModalVisible, setCountryModalVisible] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState('Turkey');
+  const [appearanceModalVisible, setAppearanceModalVisible] = useState(false);
+  const [appearance, setAppearance] = useState('one');
+  const [selectedCountry, setSelectedCountry] = useState('Germany');
 
   const handleCountrySelect = (country: string) => {
     setSelectedCountry(country);
     setCountryModalVisible(false);
+  };
+
+  const handleAppearanceSelect = (appearance: string) => {
+    setAppearance(appearance);
+    setAppearanceModalVisible(false);
   };
 
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
@@ -80,6 +88,31 @@ export default function TabLayout() {
     <CountryContext.Provider value={selectedCountry}>
       <View style={{ flex: 1 }}>
         <View>
+          <AppearanceContext.Provider value={appearance}>
+            <Modal transparent={true} visible={appearanceModalVisible} animationType="slide" onRequestClose={() => setAppearanceModalVisible(false)}>
+              <View style={styles.modalContainer}>
+                <View style={styles.modalContent}>
+                  <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
+                  <TouchableOpacity onPress={() => handleAppearanceSelect('one')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('appearanceModalOneMonth')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleAppearanceSelect('three')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('appearanceModalThreeMonths')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleAppearanceSelect('six')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('appearanceModalSixMonths')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleAppearanceSelect('oneYear')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('appearanceModalOneYear')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setAppearanceModalVisible(false)} style={[styles.closeButton]}>
+                    <Text style={styles.buttonText}>{t('appearanceModalCloseButton')}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Modal>
+          </AppearanceContext.Provider>
+
           <Modal transparent={true} visible={countryModalVisible} animationType="slide" onRequestClose={() => setCountryModalVisible(false)}>
             <View style={styles.modalContainer}>
               <View style={styles.modalContent}>
@@ -143,6 +176,18 @@ export default function TabLayout() {
               tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
               headerRight: () => (
                 <>
+                  <Pressable
+                    onPress={() => setAppearanceModalVisible(true)}
+                  >
+                    {({ pressed }) => (
+                      <FontAwesome
+                        name="calendar"
+                        size={25}
+                        color={Colors[colorScheme ?? 'light'].text}
+                        style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                      />
+                    )}
+                  </Pressable>
                   <Pressable
                     onPress={() => setCountryModalVisible(true)}
                   >

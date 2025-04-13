@@ -17,5 +17,22 @@
     "countryModalSwitzerland": "Schweiz",
     "countryModalClose": "Fermer",
     "calendar": "Calendrier",
-    "holidayList": "Liste de Vacances"
+    "holidayList": "Liste de Vacances",
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Décembre",
+    "appearanceModalOneMonth": "Un Mois",
+    "appearanceModalThreeMonths": "Trois Mois",
+    "appearanceModalSixMonths": "Six Mois",
+    "appearanceModalOneYear": "Un An",
+    "appearanceModalCloseButton": "Fermer"
 }
