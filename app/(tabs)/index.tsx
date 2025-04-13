@@ -153,7 +153,8 @@ export default function TabOneScreen() {
   };
 
   const goToToday = () => {
-    console.log(CountryContext);
+    console.log(selectedCountry);
+    console.log(appearance);
     setCurrentDate(today);
     setCalendarKey(prevKey => prevKey + 1);
   };
@@ -319,7 +320,6 @@ export default function TabOneScreen() {
 
           {appearance === 'three' && <View style={{ top: -4, height: '80%', width: '250', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
             <CalendarList
-              key={calendarKey}
               horizontal={true}
               pagingEnabled={false}
               scrollEnabled={false}
@@ -359,7 +359,6 @@ export default function TabOneScreen() {
             />
 
             <CalendarList
-              key={calendarKey}
               horizontal={true}
               pagingEnabled={false}
               scrollEnabled={false}
@@ -399,7 +398,6 @@ export default function TabOneScreen() {
             />
 
             <CalendarList
-              key={calendarKey}
               horizontal={true}
               pagingEnabled={false}
               scrollEnabled={false}
@@ -437,6 +435,12 @@ export default function TabOneScreen() {
               // borderRadius={10}
               showScrollIndicator={false}
             />
+          </View>}
+
+          {appearance === 'six' && <View style={{ top: -4, height: '80%', width: '125', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
+
+            
+
           </View>}
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18, backgroundColor: 'black', paddingLeft: 120, paddingRight: 120, bottom: -88, paddingBottom: 30, paddingTop: '10' }}>

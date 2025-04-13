@@ -86,9 +86,9 @@ export default function TabLayout() {
 
   return (
     <CountryContext.Provider value={selectedCountry}>
-      <View style={{ flex: 1 }}>
-        <View>
-          <AppearanceContext.Provider value={appearance}>
+      <AppearanceContext.Provider value={appearance}>
+        <View style={{ flex: 1 }}>
+          <View>
             <Modal transparent={true} visible={appearanceModalVisible} animationType="slide" onRequestClose={() => setAppearanceModalVisible(false)}>
               <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
@@ -111,136 +111,136 @@ export default function TabLayout() {
                 </View>
               </View>
             </Modal>
-          </AppearanceContext.Provider>
 
-          <Modal transparent={true} visible={countryModalVisible} animationType="slide" onRequestClose={() => setCountryModalVisible(false)}>
-            <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
-                <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalTurkey')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleCountrySelect('Germany')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalGermany')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleCountrySelect('Austria')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalAustria')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleCountrySelect('Switzerland')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalSwitzerland')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setCountryModalVisible(false)} style={[styles.closeButton]}>
-                  <Text style={styles.buttonText}>{t('countryModalCloseButton')}</Text>
-                </TouchableOpacity>
+            <Modal transparent={true} visible={countryModalVisible} animationType="slide" onRequestClose={() => setCountryModalVisible(false)}>
+              <View style={styles.modalContainer}>
+                <View style={styles.modalContent}>
+                  <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
+                  <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalTurkey')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleCountrySelect('Germany')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalGermany')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleCountrySelect('Austria')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalAustria')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleCountrySelect('Switzerland')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalSwitzerland')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setCountryModalVisible(false)} style={[styles.closeButton]}>
+                    <Text style={styles.buttonText}>{t('countryModalCloseButton')}</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </Modal>
+            </Modal>
 
-          <Modal transparent={true} visible={languageModalVisible} animationType="slide" onRequestClose={() => setLanguageModalVisible(false)}>
-            <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('languageModalTitle')}</Text>
-                <TouchableOpacity onPress={() => handleLanguageSelect('tr')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalGerman')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleLanguageSelect('en')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalEnglish')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleLanguageSelect('fr')}>
-                  <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalFrench')}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setLanguageModalVisible(false)} style={[styles.closeButton]}>
-                  <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
-                </TouchableOpacity>
+            <Modal transparent={true} visible={languageModalVisible} animationType="slide" onRequestClose={() => setLanguageModalVisible(false)}>
+              <View style={styles.modalContainer}>
+                <View style={styles.modalContent}>
+                  <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('languageModalTitle')}</Text>
+                  <TouchableOpacity onPress={() => handleLanguageSelect('tr')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalGerman')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleLanguageSelect('en')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalEnglish')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => handleLanguageSelect('fr')}>
+                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalFrench')}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setLanguageModalVisible(false)} style={[styles.closeButton]}>
+                    <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </Modal>
-        </View>
-        <Tabs
-          screenOptions={{
-            tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-            // Disable the static render of the header on web
-            // to prevent a hydration error in React Navigation v6.
-            headerShown: useClientOnlyValue(false, true),
-            tabBarStyle: {
-              backgroundColor: "black",
-            },
-          }}>
-          <Tabs.Screen
-            name="index"
-            options={{
-              title: t('calendar'),
-              tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
-              headerRight: () => (
-                <>
-                  <Pressable
-                    onPress={() => setAppearanceModalVisible(true)}
-                  >
-                    {({ pressed }) => (
-                      <FontAwesome
-                        name="calendar"
-                        size={25}
-                        color={Colors[colorScheme ?? 'light'].text}
-                        style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                      />
-                    )}
-                  </Pressable>
-                  <Pressable
-                    onPress={() => setCountryModalVisible(true)}
-                  >
-                    {({ pressed }) => (
-                      <FontAwesome
-                        name="globe"
-                        size={25}
-                        color={Colors[colorScheme ?? 'light'].text}
-                        style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                      />
-                    )}
-                  </Pressable>
-                  <Pressable
-                    onPress={() => setLanguageModalVisible(true)}
-                  >
-                    {({ pressed }) => (
-                      <FontAwesome
-                        name="language"
-                        size={25}
-                        color={Colors[colorScheme ?? 'light'].text}
-                        style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                      />
-                    )}
-                  </Pressable>
-                  <Link href="/modal" asChild>
-                    <Pressable>
+            </Modal>
+          </View>
+          <Tabs
+            screenOptions={{
+              tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+              // Disable the static render of the header on web
+              // to prevent a hydration error in React Navigation v6.
+              headerShown: useClientOnlyValue(false, true),
+              tabBarStyle: {
+                backgroundColor: "black",
+              },
+            }}>
+            <Tabs.Screen
+              name="index"
+              options={{
+                title: t('calendar'),
+                tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+                headerRight: () => (
+                  <>
+                    <Pressable
+                      onPress={() => setAppearanceModalVisible(true)}
+                    >
                       {({ pressed }) => (
                         <FontAwesome
-                          name="info-circle"
+                          name="calendar"
                           size={25}
                           color={Colors[colorScheme ?? 'light'].text}
                           style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                         />
                       )}
                     </Pressable>
-                  </Link>
-                </>
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="two"
-            options={{
-              title: t('holidayList'),
-              tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
-              headerTitleStyle: {
-                color: colorScheme === 'dark' ? '#fff' : '#000',
-                backgroundColor: Colors[colorScheme ?? 'light'].background,
-              },
-            }}
-          />
-        </Tabs>
-      </View>
+                    <Pressable
+                      onPress={() => setCountryModalVisible(true)}
+                    >
+                      {({ pressed }) => (
+                        <FontAwesome
+                          name="globe"
+                          size={25}
+                          color={Colors[colorScheme ?? 'light'].text}
+                          style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                        />
+                      )}
+                    </Pressable>
+                    <Pressable
+                      onPress={() => setLanguageModalVisible(true)}
+                    >
+                      {({ pressed }) => (
+                        <FontAwesome
+                          name="language"
+                          size={25}
+                          color={Colors[colorScheme ?? 'light'].text}
+                          style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                        />
+                      )}
+                    </Pressable>
+                    <Link href="/modal" asChild>
+                      <Pressable>
+                        {({ pressed }) => (
+                          <FontAwesome
+                            name="info-circle"
+                            size={25}
+                            color={Colors[colorScheme ?? 'light'].text}
+                            style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                          />
+                        )}
+                      </Pressable>
+                    </Link>
+                  </>
+                ),
+              }}
+            />
+            <Tabs.Screen
+              name="two"
+              options={{
+                title: t('holidayList'),
+                tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+                headerTitleStyle: {
+                  color: colorScheme === 'dark' ? '#fff' : '#000',
+                  backgroundColor: Colors[colorScheme ?? 'light'].background,
+                },
+              }}
+            />
+          </Tabs>
+        </View>
+      </AppearanceContext.Provider>
     </CountryContext.Provider>
   );
 
