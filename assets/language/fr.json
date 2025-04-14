@@ -7,10 +7,10 @@
     "languageModalGerman": "Deutsch",
     "languageModalEnglish": "Englisch",
     "languageModalFrench": "Französisch",
-    "languageModalClose": "Schließen",
-    "swipeToChangeMonthsText": "Flicken, um Monate zu wechseln",
+    "languageModalClose": "Fermer",
+    "swipeToChangeMonthsText": "Glissez pour changer de mois",
     "countryModalTitle": "Landauswahl",
-    "countryModalCloseButton": "Schließen",
+    "countryModalCloseButton": "Fermer",
     "countryModalTurkey": "Türkisch",
     "countryModalGermany": "Deutsch",
     "countryModalAustria": "Österreich",
@@ -34,5 +34,8 @@
     "appearanceModalThreeMonths": "Trois Mois",
     "appearanceModalSixMonths": "Six Mois",
     "appearanceModalOneYear": "Un An",
-    "appearanceModalCloseButton": "Fermer"
+    "appearanceModalCloseButton": "Fermer",
+    "selectAStateText": "Sélectionnez un État",
+    "stateSelectionButton": "État",
+    "appearanceModalTitle": "Sélection de l'apparence"
 }

@@ -5,6 +5,7 @@ import { CalendarList, Agenda } from 'react-native-calendars';
 import holidays from '../holidays.json';
 import { useTranslation } from 'react-i18next';
 import { CountryContext, AppearanceContext } from './_layout';
+import { MultiSelect } from 'react-native-element-dropdown';
 
 export default function TabOneScreen() {
   const selectedCountry = useContext(CountryContext);
@@ -72,7 +73,14 @@ export default function TabOneScreen() {
         if (Array.isArray(nationalHolidays)) {
           nationalHolidays.forEach(holiday => {
             result[holiday.date] = result[holiday.date] || { dots: [] };
-            result[holiday.date].dots.push({ key: `holiday_${selectedCountry}_National`, color: 'red', holiday: holiday.holiday });
+            // Only add one dot for national holidays if not already added
+            if (!result[holiday.date].dots.some(dot => dot.key === `holiday_${selectedCountry}_National`)) {
+              result[holiday.date].dots.push({ 
+                key: `holiday_${selectedCountry}_National`, 
+                color: 'red', 
+                holiday: holiday.holiday 
+              });
+            }
           });
         }
 
@@ -82,18 +90,28 @@ export default function TabOneScreen() {
           if (Array.isArray(schoolHolidays)) {
             schoolHolidays.forEach(holiday => {
               result[holiday.date] = result[holiday.date] || { dots: [] };
-              result[holiday.date].dots.push({ key: `holiday_${selectedCountry}_School`, color: 'green', holiday: holiday.holiday });
+              // Only add one dot for school holidays if not already added
+              if (!result[holiday.date].dots.some(dot => dot.key === `holiday_${selectedCountry}_School`)) {
+                result[holiday.date].dots.push({ 
+                  key: `holiday_${selectedCountry}_School`, 
+                  color: 'green', 
+                  holiday: holiday.holiday 
+                });
+              }
             });
           } else if (typeof schoolHolidays === 'object') {
             // For state-based holidays
             Object.keys(schoolHolidays).forEach(state => {
               (schoolHolidays[state] || []).forEach(holiday => {
                 result[holiday.date] = result[holiday.date] || { dots: [] };
-                result[holiday.date].dots.push({
-                  key: `holiday_${selectedCountry}_School_${state}`,
-                  color: 'green',
-                  holiday: holiday.holiday
-                });
+                // Only add one dot for school holidays if not already added
+                if (!result[holiday.date].dots.some(dot => dot.key === `holiday_${selectedCountry}_School`)) {
+                  result[holiday.date].dots.push({
+                    key: `holiday_${selectedCountry}_School`,
+                    color: 'green',
+                    holiday: holiday.holiday
+                  });
+                }
               });
             });
           }
@@ -105,18 +123,28 @@ export default function TabOneScreen() {
           if (Array.isArray(religiousHolidays)) {
             religiousHolidays.forEach(holiday => {
               result[holiday.date] = result[holiday.date] || { dots: [] };
-              result[holiday.date].dots.push({ key: `holiday_${selectedCountry}_Religious`, color: 'blue', holiday: holiday.holiday });
+              // Only add one dot for religious holidays if not already added
+              if (!result[holiday.date].dots.some(dot => dot.key === `holiday_${selectedCountry}_Religious`)) {
+                result[holiday.date].dots.push({ 
+                  key: `holiday_${selectedCountry}_Religious`, 
+                  color: 'blue', 
+                  holiday: holiday.holiday 
+                });
+              }
             });
           } else if (typeof religiousHolidays === 'object') {
             // For state-based holidays
             Object.keys(religiousHolidays).forEach(state => {
               (religiousHolidays[state] || []).forEach(holiday => {
                 result[holiday.date] = result[holiday.date] || { dots: [] };
-                result[holiday.date].dots.push({
-                  key: `holiday_${selectedCountry}_Religious_${state}`,
-                  color: 'blue',
-                  holiday: holiday.holiday
-                });
+                // Only add one dot for religious holidays if not already added
+                if (!result[holiday.date].dots.some(dot => dot.key === `holiday_${selectedCountry}_Religious`)) {
+                  result[holiday.date].dots.push({
+                    key: `holiday_${selectedCountry}_Religious`,
+                    color: 'blue',
+                    holiday: holiday.holiday
+                  });
+                }
               });
             });
           }
@@ -177,44 +205,77 @@ export default function TabOneScreen() {
     setCalendarKey(prevKey => prevKey + 1);
     setAppearance('one');
   };
+  const [selected, setSelected] = useState([]);
+
+  const [stateSelectionModal, setStateSelectionModal] = useState(false);
+
   const handleDayPress = (day: { dateString: string }) => {
     const date = day.dateString;
     const year = date.split('-')[0];
 
     let alertMessage = '';
+    let hasHolidays = false;
 
     // Seçilen ülkenin her tatil türünü kontrol et
     const holidayTypes = ['National', 'School', 'Religious'];
 
     holidayTypes.forEach(type => {
-      // Seçilen ülkenin her tatil türünü kontrol et
       const holidayList = holidays[year]?.[selectedCountry]?.[type];
       if (holidayList) {
         if (Array.isArray(holidayList)) {
           const holiday = holidayList.find(h => h.date === date);
           if (holiday) {
+            hasHolidays = true;
             alertMessage += `- ${holiday.holiday} - ${type} Holiday \n`;
           }
         } else if (typeof holidayList === 'object') {
           // For Germany's state-based holidays
-          Object.keys(holidayList).forEach(state => {
-            const holiday = (holidayList[state] || []).find(h => h.date === date);
-            if (holiday) {
-              alertMessage += `- ${holiday.holiday} - ${state} - ${type} Holiday \n`;
-            }
-          });
+          if (selected.length > 0) {
+            // Show holidays for all selected states
+            selected.forEach(state => {
+              const stateHolidays = holidayList[state] || [];
+              const holiday = stateHolidays.find(h => h.date === date);
+              if (holiday) {
+                hasHolidays = true;
+                alertMessage += `- ${holiday.holiday} - ${type} Holiday (${state}) \n`;
+              }
+            });
+          } else {
+            // Show all state holidays if no states are selected
+            Object.keys(holidayList).forEach(state => {
+              const holiday = (holidayList[state] || []).find(h => h.date === date);
+              if (holiday) {
+                hasHolidays = true;
+                alertMessage += `- ${holiday.holiday} - ${type} Holiday (${state}) \n`;
+              }
+            });
+          }
         }
       }
     });
 
-    if (alertMessage) {
-      Alert.alert(`${selectedCountry} Holidays on ${date}`, alertMessage.trim());
+    if (hasHolidays) {
+      const selectedStatesText = selected.length > 0 
+        ? `(${selected.join(', ')})` 
+        : '';
+      Alert.alert(
+        `${selectedCountry}${selectedStatesText} Holidays on ${date}`, 
+        alertMessage.trim()
+      );
     } else {
-      Alert.alert(`No holidays found`, `No holidays found on ${date}`);
+      Alert.alert(
+        `No holidays found`, 
+        selected.length > 0 
+          ? `No holidays found on ${date} for ${selected.join(', ')}`
+          : `No holidays found on ${date}`
+      );
     }
   };
 
-
+  const handleStateSelect = (states: string[]) => {
+    setSelected(states);
+    // setStateSelectionModal(false);
+  };
 
   // Agenda Items Formatting
   const agendaItems = Object.keys(events).map(date => ({
@@ -230,8 +291,6 @@ export default function TabOneScreen() {
   useEffect(() => {
     // console.log(agendaItems);  // Burada veri yapısını kontrol et
   }, [agendaItems]);
-
-  const a = 1;
 
   return (
     <View style={styles.container}>
@@ -276,7 +335,7 @@ export default function TabOneScreen() {
         </Modal>
 
         <View style={{ backgroundColor: '#D8E8E8' }}>
-          {appearance === 'one' && <View style={{ height: '80%', width: '100%', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-40' : '0' }}>
+          {appearance === 'one' && <View style={{ height: '80%', width: '100%', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-40' : (t('languageModalEnglish') === 'English' ? '0' : (t('languageModalGerman') === 'Deutsch' ? '0' : '1')) }}>
 
             {/* <Agenda
             key={calendarKey}
@@ -307,7 +366,7 @@ export default function TabOneScreen() {
 
               // Gösterilecek ay sayısı (örneğin: 12 ay = 1 yıl)
               pastScrollRange={3}
-              futureScrollRange={59}
+              futureScrollRange={68}
 
               // İlk gösterilecek ay
               current={currentDate}
@@ -323,7 +382,7 @@ export default function TabOneScreen() {
                 textMonthFontWeight: 'bold',
                 textMonthFontSize: 20,
                 textDayFontSize: 20,
-                weekVerticalMargin: 28
+                weekVerticalMargin: 21
               }}
               markingType={'multi-dot'}
               markedDates={{
@@ -334,6 +393,88 @@ export default function TabOneScreen() {
               // borderRadius={10}
               showScrollIndicator={false}
             />
+
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                bottom: -75,
+                right: t('languageModalFrench') === 'Französisch' ? 85 : (t('languageModalEnglish') === 'English' ? 15 : (t('languageModalGerman') === 'Deutsch' ? '15' : '20')),
+                backgroundColor: '#fe7210',
+                padding: 10,
+                borderRadius: 50,
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 10,
+                  height: 2
+                },
+                shadowOpacity: 0.15,
+                shadowRadius: 3.84,
+
+                elevation: 5
+              }}
+              onPress={() => setStateSelectionModal(true)}
+            >
+              <Text style={{ fontSize: 18, color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
+                {t('stateSelectionButton')}
+              </Text>
+            </TouchableOpacity>
+
+            <Modal transparent={true} visible={stateSelectionModal} animationType="slide" onRequestClose={() => setStateSelectionModal(false)}>
+              <View style={styles.modalContainer}>
+                <View style={[styles.modalContent, { height: 700 }]}>
+                  <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>{t('selectAStateText')}</Text>
+                  </View>
+
+                  <View style={{ left: 0, width: '100%' }}>
+                    <MultiSelect
+                      style={styles.dropdown}
+                      placeholderStyle={styles.placeholderStyle}
+                      selectedTextStyle={styles.selectedTextStyle}
+                      inputSearchStyle={styles.inputSearchStyle}
+                      iconStyle={styles.iconStyle}
+                      search
+                      data={
+                        selectedCountry === "Austria" ?
+                          ["Burgenland", "Karintiya", "Aşağı Avusturya", "Yukarı Avusturya",
+                            "Salzburg", "Steiermark", "Tirol", "Vorarlberg",
+                            "Viyana"].map((item) => ({ label: item, value: item })) :
+                          selectedCountry === "Germany" ? ["Baden-Württemberg", "Bayern",
+                            "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
+                            "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
+                            "Rheinland-Pfalz", "Saarland", "Sachsen", "Sachsen-Anhalt",
+                            "Schleswig-Holstein", "Thüringen"].map((item) =>
+                              ({ label: item, value: item })) :
+                            selectedCountry === "Switzerland" ?
+                              ["Aargau", "Appenzell Innerrhoden",
+                                "Appenzell Ausserrhoden", "Bern",
+                                "Basel - Landschaft", "Basel-Stadt",
+                                "Fribourg", "Cenevre", "Glarus",
+                                "Grisons", "Jura", "Luzern", "Neuchâtel",
+                                "Nidwalden", "Obwalden", "St.Gallen",
+                                "Schaffhausen", "Solothurn", "Schwyz",
+                                "Thurgau", "Ticino", "Uri", "Vaud",
+                                "Valais", "Zug", "Zürich"].map((item) =>
+                                  ({ label: item, value: item })) : []}
+                      labelField="label"
+                      valueField="value"
+                      placeholder={t('stateSelectionButton')}
+                      searchPlaceholder={t('stateSelectionButton')}
+                      value={selected}
+                      onChange={handleStateSelect}
+
+                      selectedStyle={styles.selectedStyle}
+                    />
+                  </View>
+
+                  <TouchableOpacity onPress={() => setStateSelectionModal(false)} style={[styles.closeButton, { width: 200, position: 'absolute', bottom: 10, right: 50 }]}>
+                    <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Modal>
+
+
           </View>}
 
           {appearance === 'three' && <View style={{ top: -4, height: '84%', width: '250', alignSelf: 'center', backgroundColor: '#D8E8E8', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
@@ -487,7 +628,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      // [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -521,7 +662,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -556,7 +697,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -589,7 +730,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -624,7 +765,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -657,7 +798,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      [today]: { selected: true, selectedColor: '#fe7210' } // Bugünü yuvarlak içine alma
                     }}
                     onDayPress={handleDayPress}
                     showScrollIndicator={false}
@@ -1133,5 +1274,37 @@ const styles = StyleSheet.create({
   calendarContainer: {
     flex: 1,
     backgroundColor: '#D8E8E8',
+  },
+  dropdown: {
+    backgroundColor: '#D8E8E8',
+    borderRadius: 10,
+    padding: 5,
+    marginBottom: 10,
+    marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: '#999',
+  },
+  selectedTextStyle: {
+    fontSize: 12,
+    color: '#333',
+  },
+  inputSearchStyle: {
+    fontSize: 14,
+    color: '#333',
+  },
+  iconStyle: {
+    width: 20,
+    height: 25,
+  },
+  selectedStyle: {
+    backgroundColor: '#CEDAE1',
+    borderRadius: 30,
   },
 });

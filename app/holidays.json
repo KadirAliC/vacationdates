@@ -3,63 +3,281 @@
     "Germany": {
       "National": [
         {
-          "date": "2025-04-05",
+          "date": "2025-04-06",
+          "holiday": "Heilige Drei Könige",
+          "day": "Monday"
+        },
+        {
+          "date": "2025-01-01",
           "holiday": "Neujahr (New Year)",
           "day": "Monday"
         },
         {
-          "date": "2025-04-04",
-          "holiday": "ulusal bayram",
+          "date": "2025-04-18",
+          "holiday": "Karfreitag (Holy Friday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2025-04-21",
+          "holiday": "Ostermontag (Easter Monday)",
           "day": "Tuesday"
         },
         {
-          "date": "2025-05-04",
-          "holiday": "ulusal bayram",
-          "day": "Tuesday"
-        },
-        {
-          "date": "2025-06-05",
-          "holiday": "ulusal bayram",
+          "date": "2025-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
           "day": "Wednesday"
+        },
+        {
+          "date": "2025-05-29",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2025-06-09",
+          "holiday": "Pfingstmontag (Whit Monday)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-03-10",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-12-26",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
+          "day": "Tuesday"
         }
       ],
       "School": {
-        "STATE1": [
+        "Baden-Württemberg": [
           {
-            "date": "2025-04-10",
-            "holiday": "Schulferien 1. Tag",
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
             "day": "Monday"
-          },
-          {
-            "date": "2025-06-04",
-            "holiday": "okul tatili",
-            "day": "Tuesday"
           }
         ],
-        "STATE2": [
+        "Bayern": [
           {
-            "date": "2025-04-12",
-            "holiday": "Schulferien 3. Tag",
-            "day": "Wednesday"
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Berlin": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Brandenburg": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Bremen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Hamburg": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Hessen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Mecklenburg-Vorpommern": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Niedersachsen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Nordrhein-Westfalen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Rheinland-Pfalz":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Saarland":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Sachsen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Sachsen-Anhalt":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Schleswig-Holstein":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Thüringen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
           }
         ]
       },
       "Religious": {
-        "STATE1": [
+        "Baden-Württemberg": [
           {
-            "date": "2025-04-15",
-            "holiday": "DIN BAYRAM",
-            "day": "Friday"
-          },
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Bayern": [
           {
-            "date": "2025-04-16",
-            "holiday": "DIN BAYRAM",
-            "day": "Saturday"
-          },
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Berlin": [
           {
-            "date": "2025-04-04",
-            "holiday": "dini bayram",
-            "day": "Tuesday"
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Brandenburg": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Bremen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Hamburg": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Hessen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Mecklenburg-Vorpommern": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Niedersachsen": [
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Nordrhein-Westfalen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Rheinland-Pfalz":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Saarland":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Sachsen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Sachsen-Anhalt":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Schleswig-Holstein":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
+          }
+        ],
+        "Thüringen":[
+          {
+            "date": "2025-04-06",
+            "holiday": "Heilige Drei Könige",
+            "day": "Monday"
           }
         ]
       }
@@ -134,15 +352,15 @@
         {
           "date": "2026-01-01",
           "holiday": "Neujahr (New Year)",
-          "day": "Friday"
+          "day": "Saturday"
         },
         {
-          "date": "2026-04-02",
-          "holiday": "Karfreitag (Holy Friday)",
-          "day": "Friday"
+          "date": "2026-04-03",
+          "holiday": "Karfreitag (Good Friday)",
+          "day": "Saturday"
         },
         {
-          "date": "2026-04-05",
+          "date": "2026-04-06",
           "holiday": "Ostermontag (Easter Monday)",
           "day": "Monday"
         },
@@ -152,12 +370,12 @@
           "day": "Friday"
         },
         {
-          "date": "2026-05-13",
+          "date": "2026-05-14",
           "holiday": "Christi Himmelfahrt (Ascension Day)",
           "day": "Thursday"
         },
         {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "holiday": "Pfingstmontag (Pentecost Monday)",
           "day": "Monday"
         },
@@ -173,7 +391,527 @@
         },
         {
           "date": "2026-12-26",
-          "holiday": "Zweiter Weihnachtstag (Boxing Day)",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
+          "day": "Saturday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Austria": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-01-06",
+          "holiday": "Heiliger Drei Könige (Three Kings Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-14",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-25",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-06-04",
+          "holiday": "Corpus Christi",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-08-15",
+          "holiday": "Mariä Himmelfahrt (Assumption Day)",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2026-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2026-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    }
+  },
+  "2027": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2027-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2027-03-26",
+          "holiday": "Karfreitag (Good Friday)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2027-03-29",
+          "holiday": "Ostermontag (Easter Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2027-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2027-05-06",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Thursday"
+        },
+        {
+          "date": "2027-05-17",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2027-10-03",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2027-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2027-12-26",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
+          "day": "Saturday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Austria": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-01-06",
+          "holiday": "Heiliger Drei Könige (Three Kings Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-14",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-25",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-06-04",
+          "holiday": "Corpus Christi",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-08-15",
+          "holiday": "Mariä Himmelfahrt (Assumption Day)",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2026-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2026-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    }
+  },
+  "2028": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2028-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2028-04-14",
+          "holiday": "Karfreitag (Good Friday)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2028-04-17",
+          "holiday": "Ostermontag (Easter Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2028-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2028-05-25",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Thursday"
+        },
+        {
+          "date": "2028-06-05",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2028-10-03",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2027-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2027-12-26",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
+          "day": "Saturday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Austria": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-01-06",
+          "holiday": "Heiliger Drei Könige (Three Kings Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-14",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-25",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-06-04",
+          "holiday": "Corpus Christi",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-08-15",
+          "holiday": "Mariä Himmelfahrt (Assumption Day)",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2026-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2026-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    }
+  },
+  "2029": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2029-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2029-03-30",
+          "holiday": "Karfreitag (Good Friday)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2029-04-02",
+          "holiday": "Ostermontag (Easter Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2029-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2029-05-10",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Thursday"
+        },
+        {
+          "date": "2029-05-21",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2029-10-03",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2029-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2029-12-26",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
+          "day": "Saturday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Austria": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-01-06",
+          "holiday": "Heiliger Drei Könige (Three Kings Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2026-05-14",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2026-05-25",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-06-04",
+          "holiday": "Corpus Christi",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-08-15",
+          "holiday": "Mariä Himmelfahrt (Assumption Day)",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    },
+    "Switzerland": {
+      "National": [
+        {
+          "date": "2026-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Wednesday"
+        },
+        {
+          "date": "2026-11-01",
+          "holiday": "All Saints' Day",
+          "day": "Saturday"
+        },
+        {
+          "date": "2026-11-02",
+          "holiday": "All Souls' Day",
+          "day": "Sunday"
+        },
+        {
+          "date": "2026-12-08",
+          "holiday": "Immaculate Conception of Mary",
+          "day": "Monday"
+        },
+        {
+          "date": "2026-12-25",
+          "holiday": "Christmas Day",
+          "day": "Thursday"
+        },
+        {
+          "date": "2026-12-26",
+          "holiday": "St. Stephen's Day",
+          "day": "Friday"
+        }
+      ],
+      "School": [],
+      "Religious": []
+    }
+  },
+  "2030": {
+    "Germany": {
+      "National": [
+        {
+          "date": "2030-01-01",
+          "holiday": "Neujahr (New Year)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2030-04-19",
+          "holiday": "Karfreitag (Good Friday)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2030-04-22",
+          "holiday": "Ostermontag (Easter Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2030-05-01",
+          "holiday": "Tag der Arbeit (Labor Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2030-05-30",
+          "holiday": "Christi Himmelfahrt (Ascension Day)",
+          "day": "Thursday"
+        },
+        {
+          "date": "2030-06-10",
+          "holiday": "Pfingstmontag (Pentecost Monday)",
+          "day": "Monday"
+        },
+        {
+          "date": "2030-10-10",
+          "holiday": "Tag der Deutschen Einheit (German Unity Day)",
+          "day": "Saturday"
+        },
+        {
+          "date": "2030-12-25",
+          "holiday": "Erster Weihnachtstag (Christmas Day)",
+          "day": "Friday"
+        },
+        {
+          "date": "2030-12-26",
+          "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
           "day": "Saturday"
         }
       ],

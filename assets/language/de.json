@@ -4,8 +4,8 @@
     "languageModalTurkish": "Türkisch",
     "languageModalGerman": "Deutsch",
     "languageModalEnglish": "Englisch",
-    "languageModalFrench": "Französisch",
-    "swipeToChangeMonthsText": "Flicken, um Monate zu wechseln",
+    "languageModalFrench": "French",
+    "swipeToChangeMonthsText": "Wischen Sie, um die Monate zu ändern.",
     "languageModalClose": "Schließen",
     "countryModalTitle": "Landauswahl",
     "countryModalCloseButton": "Schließen",
@@ -32,5 +32,11 @@
     "appearanceModalThreeMonths": "Drei Monate",
     "appearanceModalSixMonths": "Sechsklassen",
     "appearanceModalOneYear": "Ein Jahr",
-    "appearanceModalCloseButton": "Schließen"
+    "appearanceModalCloseButton": "Schließen",
+    "selectAStateText": "Wählen Sie einen Bundesland aus",
+    "stateSelectionButton": "Bundesland",
+    "yearSelectionButton": "Jahr",
+    "monthSelectionButton": "Monat",
+    "goToTodayButton": "Heute",
+    "appearanceModalTitle": "Erscheinungsbild auswählen"
 }

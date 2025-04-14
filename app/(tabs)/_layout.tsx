@@ -119,9 +119,9 @@ export default function TabLayout() {
               <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                   <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('countryModalTitle')}</Text>
-                  <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
+                  {/* <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalTurkey')}</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <TouchableOpacity onPress={() => handleCountrySelect('Germany')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalGermany')}</Text>
                   </TouchableOpacity>
@@ -142,9 +142,9 @@ export default function TabLayout() {
               <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                   <Text style={[styles.modalText, { textAlign: 'center', fontWeight: 'bold', textDecorationLine: 'underline' }]}>{t('languageModalTitle')}</Text>
-                  <TouchableOpacity onPress={() => handleLanguageSelect('tr')}>
+                  {/* <TouchableOpacity onPress={() => handleLanguageSelect('tr')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalGerman')}</Text>
                   </TouchableOpacity>

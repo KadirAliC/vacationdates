@@ -37,5 +37,7 @@
     "appearanceModalSixMonths": "Six Months",
     "appearanceModalOneYear": "One Year",
     "appearanceModalCloseButton": "Close",
-    "appearanceModalTitle": "Appearance Selection"
+    "appearanceModalTitle": "Appearance Selection",
+    "stateSelectionButton": "State",
+    "selectAStateText": "Select a State"
 }
