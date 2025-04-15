@@ -38,5 +38,8 @@
     "yearSelectionButton": "Jahr",
     "monthSelectionButton": "Monat",
     "goToTodayButton": "Heute",
-    "appearanceModalTitle": "Erscheinungsbild auswählen"
+    "appearanceModalTitle": "Erscheinungsbild auswählen",
+    "multiSelectInfo": "Sie können mehrere Auswahlen treffen.",
+    "textNumberOfStatesSelected": "Anzahl der ausgewählten Staaten: ",
+    "textApplicationUsage": "Anwendungsnutzung"
 }

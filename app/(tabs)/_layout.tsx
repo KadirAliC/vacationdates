@@ -9,6 +9,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -122,14 +123,20 @@ export default function TabLayout() {
                   {/* <TouchableOpacity onPress={() => handleCountrySelect('Turkey')}>
                     <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalTurkey')}</Text>
                   </TouchableOpacity> */}
-                  <TouchableOpacity onPress={() => handleCountrySelect('Germany')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalGermany')}</Text>
+                  <TouchableOpacity onPress={async () => {
+                    await AsyncStorage.setItem('country', selectedCountry);
+                    handleCountrySelect('Germany')}}>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('countryModalGermany')}</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => handleCountrySelect('Austria')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalAustria')}</Text>
+                  <TouchableOpacity onPress={async () => {
+                    await AsyncStorage.setItem('country', selectedCountry);
+                    handleCountrySelect('Austria')}}>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇦🇹 {t('countryModalAustria')}</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => handleCountrySelect('Switzerland')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('countryModalSwitzerland')}</Text>
+                  <TouchableOpacity onPress={async () => {
+                    await AsyncStorage.setItem('country', selectedCountry);
+                    handleCountrySelect('Switzerland')}}>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇨🇭 {t('countryModalSwitzerland')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setCountryModalVisible(false)} style={[styles.closeButton]}>
                     <Text style={styles.buttonText}>{t('countryModalCloseButton')}</Text>
@@ -146,13 +153,13 @@ export default function TabLayout() {
                     <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
                   </TouchableOpacity> */}
                   <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalGerman')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('languageModalGerman')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleLanguageSelect('en')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalEnglish')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇬🇧 {t('languageModalEnglish')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleLanguageSelect('fr')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalFrench')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇫🇷 {t('languageModalFrench')}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setLanguageModalVisible(false)} style={[styles.closeButton]}>
                     <Text style={styles.buttonText}>{t('languageModalClose')}</Text>

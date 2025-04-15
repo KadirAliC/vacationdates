@@ -37,5 +37,8 @@
     "appearanceModalCloseButton": "Fermer",
     "selectAStateText": "Sélectionnez un État",
     "stateSelectionButton": "État",
-    "appearanceModalTitle": "Sélection de l'apparence"
+    "appearanceModalTitle": "Sélection de l'apparence",
+    "multiSelectInfo": "Vous pouvez effectuer plusieurs sélections.",
+    "textNumberOfStatesSelected": "Nombre d'états sélectionnés: ",
+    "textApplicationUsage":"Utilisation de l'application"
 }

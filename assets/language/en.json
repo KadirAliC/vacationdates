@@ -39,5 +39,8 @@
     "appearanceModalCloseButton": "Close",
     "appearanceModalTitle": "Appearance Selection",
     "stateSelectionButton": "State",
-    "selectAStateText": "Select a State"
+    "selectAStateText": "Select a State",
+    "multiSelectInfo": "You can make multiple selections.",
+    "textNumberOfStatesSelected": "Number of states selected: ",
+    "textApplicationUsage": "Application Usage"
 }

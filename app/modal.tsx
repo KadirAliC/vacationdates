@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
 import { Stack } from 'expo-router';
-import EditScreenInfo from '@/components/EditScreenInfo';
+import { ScrollView } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { useTranslation } from 'react-i18next';
 
 const usageDescription = `
-This application allows users to view holidays in Turkey and Germany (all states). 
+This application allows users to view holidays in Germany, Austria, and Switzerland (all states). 
 
 1. Year and Month Selection: On the first tab, users can select a year or month to view holidays on a calendar. 
    - Tap on a specific date on the calendar to view holidays on that day.
@@ -18,19 +19,21 @@ This application allows users to view holidays in Turkey and Germany (all states
 2. Holiday List: On the second tab, users can view a list of holidays for the selected year.
    - Tap on the button to choose a year to filter the holiday list.
    - Holidays are displayed with different colors for Turkey and Germany.
+
+3. Holiday List: On the second tab, users can view a list of holidays for the selected year.
+   - Tap on the button to choose a year to filter the holiday list.
+   - Holidays are displayed with different colors for Turkey and Germany.
 `;
 
 export default function ModalScreen() {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
-      <Stack.Screen
-        name="Modal"
-        options={{ title: 'Information' }}
-      />
-      <Text style={styles.title}>Application Usage</Text>
+      <Text style={styles.title}>{t('textApplicationUsage')}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Text style={styles.description}>{usageDescription}</Text>
-
+      <ScrollView>
+        <Text style={styles.description}>{usageDescription}</Text>
+      </ScrollView>
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
   );
@@ -39,8 +42,6 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     padding: 20,
     backgroundColor: '#F8F8F8',
   },
@@ -50,19 +51,22 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 15,
     letterSpacing: 1,
+    textAlign: 'center',
   },
   separator: {
     marginVertical: 10,
     height: 1,
     width: '80%',
     backgroundColor: '#DDDDDD',
+    alignSelf: 'center',
   },
   description: {
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 24,
     textAlign: 'left',
     color: '#666',
     fontFamily: 'Roboto',
+    marginTop: -20,
   },
 
 });

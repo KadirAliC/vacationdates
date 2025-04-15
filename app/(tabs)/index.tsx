@@ -6,6 +6,8 @@ import holidays from '../holidays.json';
 import { useTranslation } from 'react-i18next';
 import { CountryContext, AppearanceContext } from './_layout';
 import { MultiSelect } from 'react-native-element-dropdown';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function TabOneScreen() {
   const selectedCountry = useContext(CountryContext);
@@ -213,7 +215,7 @@ export default function TabOneScreen() {
           const holiday = holidayList.find(h => h.date === date);
           if (holiday) {
             hasHolidays = true;
-            alertMessage += `- ${holiday.holiday} - ${type} Holiday \n`;
+            alertMessage += `🕊 ${holiday.holiday}\n`;
           }
         } else if (typeof holidayList === 'object') {
           if (selected.length > 0) {
@@ -222,7 +224,9 @@ export default function TabOneScreen() {
               const holiday = stateHolidays.find(h => h.date === date);
               if (holiday) {
                 hasHolidays = true;
-                alertMessage += `- ${holiday.holiday} - ${type} Holiday (${state}) \n`;
+                alertMessage += type === 'School' ? `📚 ${holiday.holiday} - (${state}) \n`
+                  : (type === 'Religious' ? `⛪ ${holiday.holiday} - (${state}) \n`
+                    : '');
               }
             });
           } else {
@@ -230,7 +234,9 @@ export default function TabOneScreen() {
               const holiday = (holidayList[state] || []).find(h => h.date === date);
               if (holiday) {
                 hasHolidays = true;
-                alertMessage += `- ${holiday.holiday} - ${type} Holiday (${state}) \n`;
+                alertMessage += type === 'School' ? `📚 ${holiday.holiday} - (${state}) \n`
+                  : (type === 'Religious' ? `⛪ ${holiday.holiday} - (${state}) \n`
+                    : '');
               }
             });
           }
@@ -243,7 +249,7 @@ export default function TabOneScreen() {
         ? `(${selected.join(', ')})`
         : '';
       Alert.alert(
-        `${selectedCountry}${selectedStatesText} Holidays on ${date}`,
+        `${selectedCountry} Holidays on ${date}`,
         alertMessage.trim()
       );
     }
@@ -368,13 +374,15 @@ export default function TabOneScreen() {
             />
 
             <TouchableOpacity
+
+
               style={{
                 position: 'absolute',
                 bottom: -75,
                 right: t('languageModalFrench') === 'Französisch' ? 85 : (t('languageModalEnglish') === 'English' ? 15 : (t('languageModalGerman') === 'Deutsch' ? '15' : '20')),
                 backgroundColor: '#fe7210',
                 padding: 10,
-                borderRadius: 50,
+                borderRadius: '50%',
                 shadowColor: '#000',
                 shadowOffset: {
                   width: 10,
@@ -385,11 +393,31 @@ export default function TabOneScreen() {
 
                 elevation: 5
               }}
-              onPress={() => setStateSelectionModal(true)}
+              onPress={async () => {
+                await AsyncStorage.getItem('country') !== selectedCountry ? setSelected([]) : null;
+                await AsyncStorage.getItem('country') !== selectedCountry ? AsyncStorage.setItem('country', selectedCountry) : null;
+                setStateSelectionModal(true)
+              }}
             >
-              <Text style={{ fontSize: 18, color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
+              {/* <Text style={{ fontSize: 18, color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
                 {t('stateSelectionButton')}
-              </Text>
+              </Text> */}
+
+              {selected.length > 0 &&
+                <View
+                  style={{
+                    position: 'absolute', right: -3, top: 3, backgroundColor: 'black',
+                    padding: 2, borderRadius: '50%', marginTop: -12
+                  }}
+                >
+                  <Text style={{ color: 'white', fontSize: 12 }}>  {selected.length}  </Text>
+                </View>}
+
+              <FontAwesome
+                name="map-marker"
+                size={25}
+                style={{ paddingLeft: 5, paddingRight: 5 }}
+              />
             </TouchableOpacity>
 
             <Modal transparent={true} visible={stateSelectionModal} animationType="slide" onRequestClose={() => setStateSelectionModal(false)}>
@@ -399,10 +427,17 @@ export default function TabOneScreen() {
                     <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>{t('selectAStateText')}</Text>
                   </View>
 
-                  <View style={{ left: 0, width: '100%' }}>
+                  <View style={{ left: 0, width: '100%', top: 20 }}>
+                    <View style={{ gap: 3, flexDirection: 'row', alignItems: 'center', marginBottom: -10 }}>
+                      <FontAwesome
+                        name="info-circle"
+                        size={14}
+                      />
+                      <Text style={{ fontSize: 11, fontWeight: '400' }}>{t('multiSelectInfo')}</Text>
+                    </View>
                     <MultiSelect
                       style={styles.dropdown}
-                      placeholderStyle={styles.placeholderStyle}
+                      placeholderStyle={selected.length > 0 ? { fontFamily: 'bold', fontSize: 13 } : styles.placeholderStyle}
                       selectedTextStyle={styles.selectedTextStyle}
                       inputSearchStyle={styles.inputSearchStyle}
                       iconStyle={styles.iconStyle}
@@ -411,13 +446,13 @@ export default function TabOneScreen() {
                         selectedCountry === "Austria" ?
                           ["Burgenland", "Karintiya", "Aşağı Avusturya", "Yukarı Avusturya",
                             "Salzburg", "Steiermark", "Tirol", "Vorarlberg",
-                            "Viyana"].map((item) => ({ label: item, value: item })) :
+                            "Viyana"].map((item) => ({ label: selected.includes(item) ? item + '  ✔' : item, value: item })) :
                           selectedCountry === "Germany" ? ["Baden-Württemberg", "Bayern",
                             "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
                             "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
                             "Rheinland-Pfalz", "Saarland", "Sachsen", "Sachsen-Anhalt",
                             "Schleswig-Holstein", "Thüringen"].map((item) =>
-                              ({ label: item, value: item })) :
+                              ({ label: selected.includes(item) ? item + '  ✔' : item, value: item })) :
                             selectedCountry === "Switzerland" ?
                               ["Aargau", "Appenzell Innerrhoden",
                                 "Appenzell Ausserrhoden", "Bern",
@@ -428,10 +463,10 @@ export default function TabOneScreen() {
                                 "Schaffhausen", "Solothurn", "Schwyz",
                                 "Thurgau", "Ticino", "Uri", "Vaud",
                                 "Valais", "Zug", "Zürich"].map((item) =>
-                                  ({ label: item, value: item })) : []}
+                                  ({ label: selected.includes(item) ? item + '  ✔' : item, value: item })) : []}
                       labelField="label"
                       valueField="value"
-                      placeholder={t('stateSelectionButton')}
+                      placeholder={selected.length > 0 ? t('textNumberOfStatesSelected') + selected.length.toString() : t('stateSelectionButton')}
                       searchPlaceholder={t('stateSelectionButton')}
                       value={selected}
                       onChange={handleStateSelect}
@@ -475,7 +510,7 @@ export default function TabOneScreen() {
                 ...events,
                 [today]: { selected: true, selectedColor: '#fe7210' }
               }}
-              onDayPress={handleDayPress}
+              onDayPress={() => setAppearance('one')}
               showScrollIndicator={false}
             />
 
@@ -504,7 +539,10 @@ export default function TabOneScreen() {
                 ...events,
                 [today]: { selected: true, selectedColor: '#fe7210' }
               }}
-              onDayPress={handleDayPress}
+              onDayPress={() => {
+                setAppearance('one');
+                setCurrentDate(currentDatePlus1.toISOString().split('T')[0]);
+              }}
               showScrollIndicator={false}
             />
 
@@ -534,88 +572,13 @@ export default function TabOneScreen() {
                 ...events,
                 [today]: { selected: true, selectedColor: '#fe7210' }
               }}
-              onDayPress={handleDayPress}
+              onDayPress={() => {
+                setAppearance('one');
+                setCurrentDate(currentDatePlus2.toISOString().split('T')[0]);
+              }}
               showScrollIndicator={false}
             />
 
-            <TouchableOpacity
-              style={{
-                position: 'absolute',
-                bottom: -75,
-                right: t('languageModalFrench') === 'Französisch' ? -45 : (t('languageModalEnglish') === 'English' ? -55 : (t('languageModalGerman') === 'Deutsch' ? '-55' : '20')),
-                backgroundColor: '#fe7210',
-                padding: 10,
-                borderRadius: 50,
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 10,
-                  height: 2
-                },
-                shadowOpacity: 0.15,
-                shadowRadius: 3.84,
-
-                elevation: 5
-              }}
-              onPress={() => setStateSelectionModal(true)}
-            >
-              <Text style={{ fontSize: 18, color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
-                {t('stateSelectionButton')}
-              </Text>
-            </TouchableOpacity>
-
-            <Modal transparent={true} visible={stateSelectionModal} animationType="slide" onRequestClose={() => setStateSelectionModal(false)}>
-              <View style={styles.modalContainer}>
-                <View style={[styles.modalContent, { height: 700 }]}>
-                  <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>{t('selectAStateText')}</Text>
-                  </View>
-
-                  <View style={{ left: 0, width: '100%' }}>
-                    <MultiSelect
-                      style={styles.dropdown}
-                      placeholderStyle={styles.placeholderStyle}
-                      selectedTextStyle={styles.selectedTextStyle}
-                      inputSearchStyle={styles.inputSearchStyle}
-                      iconStyle={styles.iconStyle}
-                      search
-                      data={
-                        selectedCountry === "Austria" ?
-                          ["Burgenland", "Karintiya", "Aşağı Avusturya", "Yukarı Avusturya",
-                            "Salzburg", "Steiermark", "Tirol", "Vorarlberg",
-                            "Viyana"].map((item) => ({ label: item, value: item })) :
-                          selectedCountry === "Germany" ? ["Baden-Württemberg", "Bayern",
-                            "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
-                            "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
-                            "Rheinland-Pfalz", "Saarland", "Sachsen", "Sachsen-Anhalt",
-                            "Schleswig-Holstein", "Thüringen"].map((item) =>
-                              ({ label: item, value: item })) :
-                            selectedCountry === "Switzerland" ?
-                              ["Aargau", "Appenzell Innerrhoden",
-                                "Appenzell Ausserrhoden", "Bern",
-                                "Basel - Landschaft", "Basel-Stadt",
-                                "Fribourg", "Cenevre", "Glarus",
-                                "Grisons", "Jura", "Luzern", "Neuchâtel",
-                                "Nidwalden", "Obwalden", "St.Gallen",
-                                "Schaffhausen", "Solothurn", "Schwyz",
-                                "Thurgau", "Ticino", "Uri", "Vaud",
-                                "Valais", "Zug", "Zürich"].map((item) =>
-                                  ({ label: item, value: item })) : []}
-                      labelField="label"
-                      valueField="value"
-                      placeholder={t('stateSelectionButton')}
-                      searchPlaceholder={t('stateSelectionButton')}
-                      value={selected}
-                      onChange={handleStateSelect}
-                      selectedStyle={styles.selectedStyle}
-                    />
-                  </View>
-
-                  <TouchableOpacity onPress={() => setStateSelectionModal(false)} style={[styles.closeButton, { width: 200, position: 'absolute', bottom: 10, right: 50 }]}>
-                    <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal>
           </View>}
 
           {appearance === 'six' && (
@@ -651,7 +614,9 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -685,7 +650,10 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus1.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -720,7 +688,10 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus2.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -753,7 +724,10 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus3.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -788,7 +762,10 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus4.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -821,90 +798,14 @@ export default function TabOneScreen() {
                       ...events,
                       [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus5.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
               </View>
-
-              <TouchableOpacity
-                style={{
-                  position: 'absolute',
-                  bottom: -75,
-                  right: t('languageModalFrench') === 'Französisch' ? 55 : (t('languageModalEnglish') === 'English' ? 15 : (t('languageModalGerman') === 'Deutsch' ? '10' : '20')),
-                  backgroundColor: '#fe7210',
-                  padding: 10,
-                  borderRadius: 50,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 10,
-                    height: 2
-                  },
-                  shadowOpacity: 0.15,
-                  shadowRadius: 3.84,
-
-                  elevation: 5
-                }}
-                onPress={() => setStateSelectionModal(true)}
-              >
-                <Text style={{ fontSize: 18, color: 'white', textAlign: 'center', fontWeight: 'bold' }}>
-                  {t('stateSelectionButton')}
-                </Text>
-              </TouchableOpacity>
-
-              <Modal transparent={true} visible={stateSelectionModal} animationType="slide" onRequestClose={() => setStateSelectionModal(false)}>
-                <View style={styles.modalContainer}>
-                  <View style={[styles.modalContent, { height: 700 }]}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>{t('selectAStateText')}</Text>
-                    </View>
-
-                    <View style={{ left: 0, width: '100%' }}>
-                      <MultiSelect
-                        style={styles.dropdown}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        inputSearchStyle={styles.inputSearchStyle}
-                        iconStyle={styles.iconStyle}
-                        search
-                        data={
-                          selectedCountry === "Austria" ?
-                            ["Burgenland", "Karintiya", "Aşağı Avusturya", "Yukarı Avusturya",
-                              "Salzburg", "Steiermark", "Tirol", "Vorarlberg",
-                              "Viyana"].map((item) => ({ label: item, value: item })) :
-                            selectedCountry === "Germany" ? ["Baden-Württemberg", "Bayern",
-                              "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
-                              "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
-                              "Rheinland-Pfalz", "Saarland", "Sachsen", "Sachsen-Anhalt",
-                              "Schleswig-Holstein", "Thüringen"].map((item) =>
-                                ({ label: item, value: item })) :
-                              selectedCountry === "Switzerland" ?
-                                ["Aargau", "Appenzell Innerrhoden",
-                                  "Appenzell Ausserrhoden", "Bern",
-                                  "Basel - Landschaft", "Basel-Stadt",
-                                  "Fribourg", "Cenevre", "Glarus",
-                                  "Grisons", "Jura", "Luzern", "Neuchâtel",
-                                  "Nidwalden", "Obwalden", "St.Gallen",
-                                  "Schaffhausen", "Solothurn", "Schwyz",
-                                  "Thurgau", "Ticino", "Uri", "Vaud",
-                                  "Valais", "Zug", "Zürich"].map((item) =>
-                                    ({ label: item, value: item })) : []}
-                        labelField="label"
-                        valueField="value"
-                        placeholder={t('stateSelectionButton')}
-                        searchPlaceholder={t('stateSelectionButton')}
-                        value={selected}
-                        onChange={handleStateSelect}
-                        selectedStyle={styles.selectedStyle}
-                      />
-                    </View>
-
-                    <TouchableOpacity onPress={() => setStateSelectionModal(false)} style={[styles.closeButton, { width: 200, position: 'absolute', bottom: 10, right: 50 }]}>
-                      <Text style={styles.buttonText}>{t('languageModalClose')}</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </Modal>
 
             </View>
           )}
@@ -938,7 +839,9 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events }}
-                    // onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -969,7 +872,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus1.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1000,7 +906,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus2.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1033,7 +942,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus3.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1064,7 +976,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus4.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1095,7 +1010,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus5.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1127,7 +1045,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus6.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1158,7 +1079,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus7.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1189,7 +1113,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus8.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1221,7 +1148,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus9.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1252,7 +1182,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus10.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1283,7 +1216,10 @@ export default function TabOneScreen() {
                     }}
                     markingType={'multi-dot'}
                     markedDates={{ ...events, [today]: { selected: true, selectedColor: '#fe7210' } }}
-                    onDayPress={handleDayPress}
+                    onDayPress={() => {
+                      setAppearance('one');
+                      setCurrentDate(currentDatePlus11.toISOString().split('T')[0]);
+                    }}
                     showScrollIndicator={false}
                   />
                 </View>
@@ -1303,12 +1239,12 @@ export default function TabOneScreen() {
 
           <View style={{ position: 'absolute', bottom: -70, left: -80, right: -80, backgroundColor: 'black', paddingBottom: 30 }}>
             {/* <Text style={{ alignSelf: 'center', fontSize: 12, fontWeight: '300', color: 'white' }}>{selectedCountry}</Text> */}
-            <Text style={{ alignSelf: 'center', fontSize: 12, fontWeight: '300', color: 'white' }}>{'<< ' + t('swipeToChangeMonthsText') + ' >>'}</Text>
+            <Text style={{ alignSelf: 'center', fontSize: 11, fontWeight: '300', color: 'white' }}>{'<< ' + t('swipeToChangeMonthsText') + ' >>'}</Text>
           </View>
 
         </View>
       </View>
-    </View>
+    </View >
   );
 };
 
@@ -1389,7 +1325,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   placeholderStyle: {
-    fontSize: 16,
+    fontSize: 13,
     color: '#999',
   },
   selectedTextStyle: {
