@@ -1,35 +1,69 @@
 import { StyleSheet, FlatList, View, Modal, TouchableOpacity } from 'react-native';
 import { Text } from '@/components/Themed';
 import holidays from '../holidays.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function TabTwoScreen() {
   const { t } = useTranslation();
-  // Tatil verilerini düz bir liste haline getiriyoruz
   const [selectedYear, setSelectedYear] = useState(Object.keys(holidays)[0]);
   const [yearModalVisible, setYearModalVisible] = useState(false);
+  const [holidayListData, setHolidayListData] = useState([]);
 
-  const holidayList = Object.keys(holidays).flatMap((year) => {
-    if (year === selectedYear) {
-      const countries = ['turkey', 'germany', 'austria', 'switzerland'];
-      const holidayTypes = ['national', 'school'];
-      
-      return countries.flatMap(country => {
-        return holidayTypes.flatMap(type => {
-          const holidaysForType = holidays[year][country]?.[type] || [];
-          return holidaysForType.map((holiday) => ({
-            year,
-            country: country.charAt(0).toUpperCase() + country.slice(1),
-            holiday: holiday.holiday,
-            date: holiday.date,
-            type: type.charAt(0).toUpperCase() + type.slice(1)
-          }));
+  useEffect(() => {
+    const updateHolidayList = () => {
+      const countries = [
+        { name: 'Germany', flag: '🇩🇪', color: 'grey' },
+        { name: 'Austria', flag: '🇦🇹', color: '#f78181' },
+        { name: 'Switzerland', flag: '🇨🇭', color: '#87d9ff' }
+      ];
+      const holidayTypes = {
+        National: { emoji: '🕊' },
+        Religious: { emoji: '⛪' },
+        School: { emoji: '📚' }
+      };
+
+      const newList = countries.flatMap(country => {
+        return Object.entries(holidayTypes).flatMap(([type, typeInfo]) => {
+          const countryData = holidays[selectedYear]?.[country.name] || {};
+          let holidaysForType = [];
+
+          // Get the holiday data based on type
+          const typeData = countryData[type] || [];
+          
+          // Handle Religious holidays (state-based)
+          if (type === 'Religious') {
+            holidaysForType = Object.values(typeData).flat();
+          }
+          // Handle School and National holidays (direct arrays)
+          else {
+            holidaysForType = Array.isArray(typeData) 
+              ? typeData 
+              : [];
+          }
+
+          if (holidaysForType.length > 0) {
+            return holidaysForType.map((holiday) => ({
+              year: selectedYear,
+              country: country.name,
+              countryFlag: country.flag,
+              holiday: holiday.holiday,
+              date: holiday.date,
+              type: type,
+              typeEmoji: typeInfo.emoji,
+              backgroundColor: country.color,
+              textColor: typeInfo.color
+            }));
+          }
+          return [];
         });
       });
-    }
-    return [];
-  });
+
+      setHolidayListData(newList);
+    };
+
+    updateHolidayList();
+  }, [selectedYear]);
 
   const handleYearSelect = (year) => {
     setSelectedYear(year);
@@ -38,19 +72,20 @@ export default function TabTwoScreen() {
 
   const years = Object.keys(holidays);
 
-  // Liste öğelerini ekranda gösterecek FlatList
   const renderHolidayItem = ({ item }) => (
-    <View style={[styles.itemContainer, item.country === 'Turkey' ? styles.turkeyStyle : styles.germanyStyle]}>
-      <Text style={styles.itemText}>
-        {item.date} - <Text style={styles.countryText}>{item.country}</Text>: {item.holiday} ({item.type})
-      </Text>
+    <View style={[styles.itemContainer, { backgroundColor: item.backgroundColor }]}>
+      <View style={styles.itemContent}>
+        <Text style={[styles.itemText, { color: item.textColor }]}>
+          {item.date} - {item.countryFlag} {item.typeEmoji} {item.holiday} ({item.type})
+        </Text>
+      </View>
     </View>
   );
 
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 0, width: 200 }]}> 
+        <TouchableOpacity onPress={() => setYearModalVisible(true)} style={[styles.button, { flex: 0, width: 200 }]}>
           <Text style={styles.buttonText}>-{selectedYear}- {'\n'}</Text>
           <Text style={styles.buttonText}>{t('yearSelectionButton')}</Text>
         </TouchableOpacity>
@@ -79,7 +114,7 @@ export default function TabTwoScreen() {
       </Modal>
 
       <FlatList
-        data={holidayList}
+        data={holidayListData}
         renderItem={renderHolidayItem}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -154,7 +189,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   closeButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: 'red',
     padding: 10,
     borderRadius: 5,
     justifyContent: 'center',

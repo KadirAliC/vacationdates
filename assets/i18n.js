@@ -9,14 +9,14 @@ import fr from './language/fr.json';
 i18n
   .use(initReactI18next)
   .init({
-    fallbackLng: 'de',
+    fallbackLng: 'en',
     compatibilityJSON: 'v3',
     resources: {
       en: { translation: en },
       de: { translation: de },
       fr: { translation: fr },
     },
-    lng: 'de',
+    lng: 'en',
     interpolation: {
       escapeValue: false,
     },
