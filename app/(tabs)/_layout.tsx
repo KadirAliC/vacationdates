@@ -153,13 +153,13 @@ export default function TabLayout() {
                     <Text style={[styles.modalItem, styles.modalText]}>{t('languageModalTurkish')}</Text>
                   </TouchableOpacity> */}
                   <TouchableOpacity onPress={() => handleLanguageSelect('de')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('languageModalGerman')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('languageModalGerman')}{t('languageModalGerman') === "Deutsch" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleLanguageSelect('en')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇬🇧 {t('languageModalEnglish')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇬🇧 {t('languageModalEnglish')}{t('languageModalEnglish') === "English" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleLanguageSelect('fr')}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇫🇷 {t('languageModalFrench')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇫🇷 {t('languageModalFrench')}{t('languageModalFrench') === "Französisch" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setLanguageModalVisible(false)} style={[styles.closeButton]}>
                     <Text style={styles.buttonText}>{t('languageModalClose')}</Text>

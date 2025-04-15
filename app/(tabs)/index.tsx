@@ -1,7 +1,7 @@
 import '../../assets/i18n';
 import { Text, View, StyleSheet, Alert, TouchableOpacity, Modal, FlatList } from 'react-native';
 import { useState, useMemo, useContext, useEffect } from 'react';
-import { CalendarList, Agenda } from 'react-native-calendars';
+import { CalendarList, Agenda, LocaleConfig } from 'react-native-calendars';
 import holidays from '../holidays.json';
 import { useTranslation } from 'react-i18next';
 import { CountryContext, AppearanceContext } from './_layout';
@@ -9,10 +9,62 @@ import { MultiSelect } from 'react-native-element-dropdown';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export default function TabOneScreen() {
   const selectedCountry = useContext(CountryContext);
   const { appearance, setAppearance } = useContext(AppearanceContext);
   const { t } = useTranslation();
+  LocaleConfig.locales['de'] = {
+    monthNames: [
+      t('languageModalEnglish') === 'English' ? 'January' : (t('languageModalGerman') === 'Deutsch' ? 'Januar' : 'janvier'),
+      t('languageModalEnglish') === 'English' ? 'February' : (t('languageModalGerman') === 'Deutsch' ? 'Februar' : 'février'),
+      t('languageModalEnglish') === 'English' ? 'March' : (t('languageModalGerman') === 'Deutsch' ? 'März' : 'mars'),
+      t('languageModalEnglish') === 'English' ? 'April' : (t('languageModalGerman') === 'Deutsch' ? 'April' : 'avril'),
+      t('languageModalEnglish') === 'English' ? 'May' : (t('languageModalGerman') === 'Deutsch' ? 'Mai' : 'mai'),
+      t('languageModalEnglish') === 'English' ? 'June' : (t('languageModalGerman') === 'Deutsch' ? 'Juni' : 'juin'),
+      t('languageModalEnglish') === 'English' ? 'July' : (t('languageModalGerman') === 'Deutsch' ? 'Juli' : 'juillet'),
+      t('languageModalEnglish') === 'English' ? 'August' : (t('languageModalGerman') === 'Deutsch' ? 'August' : 'août'),
+      t('languageModalEnglish') === 'English' ? 'September' : (t('languageModalGerman') === 'Deutsch' ? 'September' : 'septembre'),
+      t('languageModalEnglish') === 'English' ? 'October' : (t('languageModalGerman') === 'Deutsch' ? 'Oktober' : 'octobre'),
+      t('languageModalEnglish') === 'English' ? 'November' : (t('languageModalGerman') === 'Deutsch' ? 'November' : 'novembre'),
+      t('languageModalEnglish') === 'English' ? 'December' : (t('languageModalGerman') === 'Deutsch' ? 'Dezember' : 'décembre')
+    ],
+    monthNamesShort: [
+      t('languageModalEnglish') === 'English' ? 'Jan.' : (t('languageModalGerman') === 'Deutsch' ? 'Jan.' : 'janv.'),
+      t('languageModalEnglish') === 'English' ? 'Feb.' : (t('languageModalGerman') === 'Deutsch' ? 'Feb.' : 'févr.'),
+      t('languageModalEnglish') === 'English' ? 'Mär.' : (t('languageModalGerman') === 'Deutsch' ? 'Mär.' : 'mars'),
+      t('languageModalEnglish') === 'English' ? 'Apr.' : (t('languageModalGerman') === 'Deutsch' ? 'Apr.' : 'avril'),
+      t('languageModalEnglish') === 'English' ? 'May' : (t('languageModalGerman') === 'Deutsch' ? 'Mai' : 'mai'),
+      t('languageModalEnglish') === 'English' ? 'Jun.' : (t('languageModalGerman') === 'Deutsch' ? 'Jun.' : 'juin'),
+      t('languageModalEnglish') === 'English' ? 'Jul.' : (t('languageModalGerman') === 'Deutsch' ? 'Jul.' : 'juillet'),
+      t('languageModalEnglish') === 'English' ? 'Aug.' : (t('languageModalGerman') === 'Deutsch' ? 'Aug.' : 'août'),
+      t('languageModalEnglish') === 'English' ? 'Sep.' : (t('languageModalGerman') === 'Deutsch' ? 'Sep.' : 'septembre'),
+      t('languageModalEnglish') === 'English' ? 'Oct.' : (t('languageModalGerman') === 'Deutsch' ? 'Oct.' : 'octobre'),
+      t('languageModalEnglish') === 'English' ? 'Nov.' : (t('languageModalGerman') === 'Deutsch' ? 'Nov.' : 'novembre'),
+      t('languageModalEnglish') === 'English' ? 'Dec.' : (t('languageModalGerman') === 'Deutsch' ? 'Dec.' : 'décembre')
+    ],
+    dayNames: [
+      t('languageModalEnglish') === 'English' ? 'Sunday' : (t('languageModalGerman') === 'Deutsch' ? 'Sonntag' : 'dimanche'),
+      t('languageModalEnglish') === 'English' ? 'Monday' : (t('languageModalGerman') === 'Deutsch' ? 'Montag' : 'lundi'),
+      t('languageModalEnglish') === 'English' ? 'Tuesday' : (t('languageModalGerman') === 'Deutsch' ? 'Dienstag' : 'mardi'),
+      t('languageModalEnglish') === 'English' ? 'Wednesday' : (t('languageModalGerman') === 'Deutsch' ? 'Mittwoch' : 'mercredi'),
+      t('languageModalEnglish') === 'English' ? 'Thursday' : (t('languageModalGerman') === 'Deutsch' ? 'Donnerstag' : 'jeudi'),
+      t('languageModalEnglish') === 'English' ? 'Friday' : (t('languageModalGerman') === 'Deutsch' ? 'Freitag' : 'vendredi'),
+      t('languageModalEnglish') === 'English' ? 'Saturday' : (t('languageModalGerman') === 'Deutsch' ? 'Samstag' : 'samedi')
+    ],
+    dayNamesShort: [
+      t('languageModalEnglish') === 'English' ? 'Sun' : (t('languageModalGerman') === 'Deutsch' ? 'So.' : 'dim.'),
+      t('languageModalEnglish') === 'English' ? 'Mon' : (t('languageModalGerman') === 'Deutsch' ? 'Mo.' : 'lun.'),
+      t('languageModalEnglish') === 'English' ? 'Tue' : (t('languageModalGerman') === 'Deutsch' ? 'Di.' : 'mar.'),
+      t('languageModalEnglish') === 'English' ? 'Wed' : (t('languageModalGerman') === 'Deutsch' ? 'Mi.' : 'mer.'),
+      t('languageModalEnglish') === 'English' ? 'Thu' : (t('languageModalGerman') === 'Deutsch' ? 'Do.' : 'jeu.'),
+      t('languageModalEnglish') === 'English' ? 'Fri' : (t('languageModalGerman') === 'Deutsch' ? 'Fr.' : 'ven.'),
+      t('languageModalEnglish') === 'English' ? 'Sat' : (t('languageModalGerman') === 'Deutsch' ? 'Sa.' : 'sam.')
+    ],
+  };
+  
+  LocaleConfig.defaultLocale = 'de';
+  
   const months = [
     { number: '01', name: `1. ${t('january')}` },
     { number: '02', name: `2. ${t('february')}` },
@@ -490,7 +542,7 @@ export default function TabOneScreen() {
               pagingEnabled={false}
               scrollEnabled={false}
               firstDay={1}
-              calendarHeight={100}
+              calendarHeight={200}
               calendarWidth={250}
               pastScrollRange={3}
               futureScrollRange={59}
@@ -514,12 +566,43 @@ export default function TabOneScreen() {
               showScrollIndicator={false}
             />
 
+            {/* <CalendarList
+              calendarHeight={200}
+              calendarWidth={250}
+              current={currentDate}
+              markingType={'multi-dot'}
+              horizontal={true}
+              pagingEnabled={false}
+              scrollEnabled={false}
+              firstDay={1}
+              pastScrollRange={3}
+              futureScrollRange={59}
+              theme={{
+                calendarBackground: 'yellow',
+                monthTextColor: '#000',
+                arrowColor: '#000',
+                textMonthFontWeight: 'bold',
+                textMonthFontSize: 13,
+                textDayFontSize: 14,
+                weekVerticalMargin: -6,
+                marginBottom: 100
+              }}
+              markedDates={{
+                ...events,
+                [today]: { selected: true, selectedColor: '#fe7210' }
+              }}
+              onDayPress={() => setAppearance('one')}
+              showScrollIndicator={false}
+            />
+
+            <Text>asasdasd</Text> */}
+
             <CalendarList
               horizontal={true}
               pagingEnabled={false}
               scrollEnabled={false}
               firstDay={1}
-              calendarHeight={100}
+              calendarHeight={200}
               calendarWidth={250}
               pastScrollRange={3}
               futureScrollRange={59}
@@ -551,7 +634,7 @@ export default function TabOneScreen() {
               pagingEnabled={false}
               scrollEnabled={false}
               firstDay={1}
-              calendarHeight={100}
+              calendarHeight={200}
               calendarWidth={250}
               pastScrollRange={3}
               futureScrollRange={59}
@@ -591,7 +674,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -612,7 +695,7 @@ export default function TabOneScreen() {
                     markingType={'multi-dot'}
                     markedDates={{
                       ...events,
-                      [today]: { selected: true, selectedColor: '#fe7210' }
+                      // [today]: { selected: true, selectedColor: '#fe7210' }
                     }}
                     onDayPress={() => {
                       setAppearance('one');
@@ -627,7 +710,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -665,7 +748,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -701,7 +784,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -739,7 +822,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -775,7 +858,7 @@ export default function TabOneScreen() {
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={100}
+                    calendarHeight={200}
                     calendarWidth={180}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -813,7 +896,7 @@ export default function TabOneScreen() {
           {appearance === 'oneYear' && (
             <View style={{ backgroundColor: '#D8E8E8', top: -4, height: '84%', alignSelf: 'center', right: t('languageModalFrench') === 'Französisch' ? '-10' : '0' }}>
               <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <View style={{ width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? 20 : 0, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
@@ -880,7 +963,7 @@ export default function TabOneScreen() {
                   />
                 </View>
 
-                <View style={{ left: -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? -30 : -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
@@ -916,20 +999,20 @@ export default function TabOneScreen() {
               </View>
 
               <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <View style={{ width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? 20 : 0, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={70}
+                    calendarHeight={160}
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
                     current={currentDatePlus3.toISOString().split('T')[0]}
                     theme={{
-                      calendarBackground: '#D8E8E8',
+                      calendarBackground: '#white',
                       monthTextColor: '#000',
                       arrowColor: '#000',
                       textMonthFontWeight: 'bold',
@@ -984,7 +1067,7 @@ export default function TabOneScreen() {
                   />
                 </View>
 
-                <View style={{ left: -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? -30 : -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
@@ -1018,15 +1101,16 @@ export default function TabOneScreen() {
                   />
                 </View>
               </View>
+
               <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <View style={{ width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? 20 : 0, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
                     pagingEnabled={false}
                     scrollEnabled={false}
                     firstDay={1}
-                    calendarHeight={70}
+                    calendarHeight={160}
                     calendarWidth={140}
                     pastScrollRange={3}
                     futureScrollRange={59}
@@ -1087,7 +1171,7 @@ export default function TabOneScreen() {
                   />
                 </View>
 
-                <View style={{ left: -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? -30 : -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
@@ -1121,8 +1205,9 @@ export default function TabOneScreen() {
                   />
                 </View>
               </View>
+
               <View style={{ backgroundColor: '#D8E8E8', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <View style={{ width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? 20 : 0, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
@@ -1190,7 +1275,7 @@ export default function TabOneScreen() {
                   />
                 </View>
 
-                <View style={{ left: -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
+                <View style={{ left: t('languageModalFrench') === 'Französisch' ? -30 : -10, width: '33%', backgroundColor: '#D8E8E8', overflow: 'hidden' }}>
                   <CalendarList
                     key={calendarKey}
                     horizontal={true}
