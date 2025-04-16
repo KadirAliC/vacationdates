@@ -126,17 +126,17 @@ export default function TabLayout() {
                   <TouchableOpacity onPress={async () => {
                     await AsyncStorage.setItem('country', selectedCountry);
                     handleCountrySelect('Germany')}}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('countryModalGermany')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇩🇪 {t('countryModalGermany')} {selectedCountry === "Germany" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={async () => {
                     await AsyncStorage.setItem('country', selectedCountry);
                     handleCountrySelect('Austria')}}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇦🇹 {t('countryModalAustria')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇦🇹 {t('countryModalAustria')} {selectedCountry === "Austria" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={async () => {
                     await AsyncStorage.setItem('country', selectedCountry);
                     handleCountrySelect('Switzerland')}}>
-                    <Text style={[styles.modalItem, styles.modalText]}>🇨🇭 {t('countryModalSwitzerland')}</Text>
+                    <Text style={[styles.modalItem, styles.modalText]}>🇨🇭 {t('countryModalSwitzerland')} {selectedCountry === "Switzerland" ? " ✔" : ""}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setCountryModalVisible(false)} style={[styles.closeButton]}>
                     <Text style={styles.buttonText}>{t('countryModalCloseButton')}</Text>
