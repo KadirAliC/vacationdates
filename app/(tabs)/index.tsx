@@ -502,9 +502,9 @@ export default function TabOneScreen() {
                       search
                       data={
                         selectedCountry === "Austria" ?
-                          ["Burgenland", "Karintiya", "Aşağı Avusturya", "Yukarı Avusturya",
-                            "Salzburg", "Steiermark", "Tirol", "Vorarlberg",
-                            "Viyana"].map((item) => ({ label: selected.includes(item) ? item + '  ✔' : item, value: item })) :
+                          ["Burgenland", "Kärnten", "Salzburg", "Vorarlberg",
+                            "Tirol", "Steiermark", "Oberösterreich", "Niederösterreich",
+                            "Wien"].map((item) => ({ label: selected.includes(item) ? item + '  ✔' : item, value: item })) :
                           selectedCountry === "Germany" ? ["Baden-Württemberg", "Bayern",
                             "Berlin", "Brandenburg", "Bremen", "Hamburg", "Hessen",
                             "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen",
