@@ -301,8 +301,14 @@ export default function TabOneScreen() {
         ? `(${selected.join(', ')})`
         : '';
       Alert.alert(
-        `${selectedCountry} Holidays on ${date}`,
-        alertMessage.trim()
+        t('languageModalGerman') === 'Deutsch' ? `${selectedCountry} Feiertage am ${date}` : (t('languageModalEnglish') === 'English' ? `${selectedCountry} Holidays on ${date}` : `Jours fériés de ${selectedCountry} le ${date}`),
+        alertMessage.trim(),
+        [
+          {
+            text: t('languageModalGerman') === 'Deutsch' ? 'OK' : (t('languageModalEnglish') === 'English' ? 'OK' : 'D\'accord'),
+            onPress: () => {},
+          },
+        ]
       );
     }
     else {
