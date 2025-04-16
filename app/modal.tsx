@@ -5,6 +5,15 @@ import { ScrollView } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { useTranslation } from 'react-i18next';
 
+export const screenOptions = {
+  title: 'aaaaaaa',
+};
+
+export const options = {
+  title: 'wwwwwwww',
+};
+
+
 const usageDescription = `
 This application allows users to view holidays in Germany, Austria, and Switzerland (all states). 
 
@@ -28,14 +37,17 @@ This application allows users to view holidays in Germany, Austria, and Switzerl
 export default function ModalScreen() {
   const { t } = useTranslation();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{t('textApplicationUsage')}</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <ScrollView>
-        <Text style={styles.description}>{t('usageDescription')}</Text>
-      </ScrollView>
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-    </View>
+    <>
+      <Stack.Screen options={{ title: t('helpText') }} />
+      <View style={styles.container}>
+        <Text style={styles.title}>{t('textApplicationUsage')}</Text>
+        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        <ScrollView>
+          <Text style={styles.description}>{t('usageDescription')}</Text>
+        </ScrollView>
+        <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      </View>
+    </>
   );
 }
 
