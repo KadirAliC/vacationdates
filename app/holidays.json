@@ -51,234 +51,274 @@
           "date": "2025-12-26",
           "holiday": "Zweiter Weihnachtstag (St. Stephen's Day)",
           "day": "Tuesday"
+        },
+        {
+          "date": "2025-04-04",
+          "holiday": "Dummy data",
+          "day": "Tuesday"
+        },
+        {
+          "date": "2025-04-03",
+          "holiday": "Dummy data",
+          "day": "Tuesday"
         }
       ],
       "School": {
         "Baden-Württemberg": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
         "Bayern": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
+            "date": "2025-03-31",
+            "holiday": "Winterferien Tag 1",
             "day": "Monday"
+          },
+          {
+            "date": "2025-04-01",
+            "holiday": "Winterferien Tag 2",
+            "day": "Tuesday"
+          },
+          {
+            "date": "2025-04-02",
+            "holiday": "Winterferien Tag 3",
+            "day": "Wednesday"
+          },
+        
+          {
+            "date": "2025-04-04",
+            "holiday": "Winterferien Tag 5",
+            "day": "Friday"
+          },
+          {
+            "date": "2025-04-05",
+            "holiday": "Winterferien Tag 6",
+            "day": "Friday"
+          },
+          {
+            "date": "2025-04-06",
+            "holiday": "Winterferien Tag 7",
+            "day": "Friday"
           }
         ],
         "Berlin": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
+            "date": "2025-02-03",
+            "holiday": "Winterferien Tag 1",
             "day": "Monday"
+          },
+          {
+            "date": "2025-02-04",
+            "holiday": "Winterferien Tag 2",
+            "day": "Tuesday"
+          },
+          {
+            "date": "2025-02-05",
+            "holiday": "Winterferien Tag 3",
+            "day": "Wednesday"
+          },
+          {
+            "date": "2025-02-06",
+            "holiday": "Winterferien Tag 4",
+            "day": "Thursday"
+          },
+          {
+            "date": "2025-02-07",
+            "holiday": "Winterferien Tag 5",
+            "day": "Friday"
           }
         ],
         "Brandenburg": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
+            "date": "2025-02-03",
+            "holiday": "Winterferien Tag 1",
             "day": "Monday"
+          },
+          {
+            "date": "2025-02-04",
+            "holiday": "Winterferien Tag 2",
+            "day": "Tuesday"
+          },
+          {
+            "date": "2025-02-05",
+            "holiday": "Winterferien Tag 3",
+            "day": "Wednesday"
+          },
+          {
+            "date": "2025-02-06",
+            "holiday": "Winterferien Tag 4",
+            "day": "Thursday"
+          },
+          {
+            "date": "2025-02-07",
+            "holiday": "Winterferien Tag 5",
+            "day": "Friday"
           }
         ],
         "Bremen": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
+            "date": "2025-02-03",
+            "holiday": "Winterferien Tag 1",
             "day": "Monday"
+          },
+          {
+            "date": "2025-02-04",
+            "holiday": "Winterferien Tag 2",
+            "day": "Tuesday"
           }
         ],
         "Hamburg": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
+            "date": "2025-03-10",
+            "holiday": "Winterferien Tag 1",
             "day": "Monday"
+          },
+          {
+            "date": "2025-03-11",
+            "holiday": "Winterferien Tag 2",
+            "day": "Tuesday"
+          },
+          {
+            "date": "2025-03-12",
+            "holiday": "Winterferien Tag 3",
+            "day": "Wednesday"
+          },
+          {
+            "date": "2025-03-13",
+            "holiday": "Winterferien Tag 4",
+            "day": "Thursday"
+          },
+          {
+            "date": "2025-03-14",
+            "holiday": "Winterferien Tag 5",
+            "day": "Friday"
+          },
+          {
+            "date": "2025-03-15",
+            "holiday": "Winterferien Tag 6",
+            "day": "Saturday"
+          },
+          {
+            "date": "2025-03-16",
+            "holiday": "Winterferien Tag 7",
+            "day": "Sunday"
+          },
+          {
+            "date": "2025-03-17",
+            "holiday": "Winterferien Tag 8",
+            "day": "Monday"
+          },
+          {
+            "date": "2025-03-18",
+            "holiday": "Winterferien Tag 9",
+            "day": "Tuesday"
+          },
+          {
+            "date": "2025-03-19",
+            "holiday": "Winterferien Tag 10",
+            "day": "Wednesday"
+          },
+          {
+            "date": "2025-03-20",
+            "holiday": "Winterferien Tag 11",
+            "day": "Thursday"
+          },
+          {
+            "date": "2025-03-21",
+            "holiday": "Winterferien Tag 12",
+            "day": "Friday"
           }
         ],
         "Hessen": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
         "Mecklenburg-Vorpommern": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
         "Niedersachsen": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
-        "Nordrhein-Westfalen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Nordrhein-Westfalen": [
+         
         ],
-        "Rheinland-Pfalz":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Rheinland-Pfalz": [
+         
         ],
-        "Saarland":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Saarland": [
+        
         ],
-        "Sachsen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Sachsen": [
+         
         ],
-        "Sachsen-Anhalt":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Sachsen-Anhalt": [
+         
         ],
-        "Schleswig-Holstein":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Schleswig-Holstein": [
+         
         ],
-        "Thüringen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Thüringen": [
+          
         ]
       },
       "Religious": {
         "Baden-Württemberg": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
         "Bayern": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+         {
+          "date": "2025-04-05",
+          "holiday": "Dummy data",
+          "day": "Tuesday"
+         }
         ],
         "Berlin": [
           {
             "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+            "holiday": "Dummy data",
+            "day": "Tuesday"
+           }
         ],
         "Brandenburg": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+         
         ],
         "Bremen": [
           {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+            "date": "2025-04-03",
+            "holiday": "Dummy data",
+            "day": "Tuesday"
+           }
         ],
         "Hamburg": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
         "Hessen": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+         
         ],
         "Mecklenburg-Vorpommern": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+         
         ],
         "Niedersachsen": [
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+          
         ],
-        "Nordrhein-Westfalen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Nordrhein-Westfalen": [
+          
         ],
-        "Rheinland-Pfalz":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Rheinland-Pfalz": [
+         
         ],
-        "Saarland":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Saarland": [
+          
         ],
-        "Sachsen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Sachsen": [
+          
         ],
-        "Sachsen-Anhalt":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Sachsen-Anhalt": [
+          
         ],
-        "Schleswig-Holstein":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Schleswig-Holstein": [
+          
         ],
-        "Thüringen":[
-          {
-            "date": "2025-04-06",
-            "holiday": "Heilige Drei Könige",
-            "day": "Monday"
-          }
+        "Thüringen": [
+         
         ]
       }
     },
@@ -291,20 +331,132 @@
         }
       ],
       "School": {
-        "STATE1": [
+        "Burgenland": [
           {
             "date": "2025-04-05",
-            "holiday": "Austria school",
+            "holiday": "Dummy data 1",
+            "day": "Monday"
+          }
+        ],
+        "Kärnten": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 2",
+            "day": "Monday"
+          }
+        ],
+        "Niederösterreich": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 3",
+            "day": "Monday"
+          }
+        ],
+        "Oberösterreich": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 4",
+            "day": "Monday"
+          }
+        ],
+        "Salzburg": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 5",
+            "day": "Monday"
+          }
+        ],
+        "Steiermark": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 6",
+            "day": "Monday"
+          }
+        ],
+        "Tirol": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 7",
+            "day": "Monday"
+          }
+        ],
+        "Vorarlberg": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 8",
+            "day": "Monday"
+          }
+        ],
+        "Wien": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 9",
             "day": "Monday"
           }
         ]
       },
       "Religious": {
-        "STATE1": [
+        "Burgenland": [
           {
             "date": "2025-04-05",
-            "holiday": "Austria religious",
-            "day": "Friday"
+            "holiday": "Dummy data 10",
+            "day": "Monday"
+          }
+        ],
+        "Kärnten": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 11",
+            "day": "Monday"
+          }
+        ],
+        "Niederösterreich": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 12",
+            "day": "Monday"
+          }
+        ],
+        "Oberösterreich": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 13",
+            "day": "Monday"
+          }
+        ],
+        "Salzburg": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 14",
+            "day": "Monday"
+          }
+        ],
+        "Steiermark": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 15",
+            "day": "Monday"
+          }
+        ],
+        "Tirol": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 16",
+            "day": "Monday"
+          }
+        ],
+        "Vorarlberg": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 17",
+            "day": "Monday"
+          }
+        ],
+        "Wien": [
+          {
+            "date": "2025-04-15",
+            "holiday": "Dummy data 18",
+            "day": "Monday"
           }
         ]
       }
